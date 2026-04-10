@@ -96,6 +96,47 @@ export const aiSmart = [
   { title: 'RISC-V 进入量产汽车', text: 'Bosch、Infineon、Nordic、NXP、Qualcomm 五家成立德国合资公司聚焦车规 RISC-V。零跑 LingXin01 SoC 用于 ADAS；长城紫荆 M100 MCU 已搭载新车型。' },
 ];
 
+export const designTrends = [
+  {
+    title: 'Cadence ChipStack AI Super Agent：EDA 从菜单交互走向意图对话',
+    text: 'Cadence 发布 ChipStack AI Super Agent（2 月 10 日），让工程师用自然语言描述意图，由多智能体自动生成 RTL、测试平台和验证方案。早期客户 NVIDIA、Qualcomm、Altera、Tenstorrent 反馈生产力提升 10x。这是 EDA 工具 UX 从"工具操作"到"意图对话"的历史性转向。',
+    sources: [
+      { name: 'Cadence', url: 'https://www.cadence.com/en_US/home/company/newsroom/press-releases/pr/2026/cadence-unleashes-chipstack-ai-super-agent-pioneering-a-new.html' },
+      { name: 'EE Times', url: 'https://www.eetimes.com/cadence-unveils-chipstack-ai-agent-for-agentic-chip-design-and-verification/' },
+    ],
+  },
+  {
+    title: 'NVIDIA Vera Rubin：从芯片到机架的"极致协同设计"语言',
+    text: 'NVIDIA 在 CES 和 GTC 2026 发布 Vera Rubin 平台——6 颗芯片（Vera CPU、Rubin GPU、NVLink 6、ConnectX-9、BlueField-4、Spectrum-6）协同设计为一个统一的 AI 超级计算机机架，不再是独立芯片的简单组合。这标志着 AI 硬件发布的新视觉语言：整机架即产品。',
+    sources: [
+      { name: 'NVIDIA', url: 'https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer' },
+      { name: 'NVIDIA Dev Blog', url: 'https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/' },
+    ],
+  },
+  {
+    title: 'Siemens Digital Twin Composer：HMI 从仪表盘走向可导航虚拟孪生',
+    text: 'Siemens 在 CES 2026 发布 Digital Twin Composer，基于 NVIDIA Omniverse 将 2D/3D 数字孪生数据与实时遥测统一到一个场景中。"一个模型贯穿设计、仿真、运行"的理念，把晶圆厂操作员 HMI 从平面仪表盘重塑为可导航的虚拟孪生空间。2026 年中上线 Siemens Xcelerator 市场。',
+    sources: [
+      { name: 'Siemens', url: 'https://news.siemens.com/en-us/digital-twin-composer-ces-2026/' },
+      { name: 'Metrology News', url: 'https://metrology.news/siemens-digital-twin-composer-brings-real-time-intelligence-to-the-factory-digital-twin/' },
+    ],
+  },
+  {
+    title: 'Intel 18A 首秀：Core Ultra Series 3 的工业设计宣言',
+    text: 'Intel 在 CES 2026 发布首款 Intel 18A 量产消费平台 Core Ultra Series 3，把"美国制造"作为工业设计语言的核心叙事，将芯片封装与品牌视觉绑定到 CEO 林本坚领导下的 Intel Foundry 复兴故事。',
+    sources: [
+      { name: 'Intel', url: 'https://www.intc.com/news-events/press-releases/detail/1757/ces-2026-intel-core-ultra-series-3-debuts-as-first-built' },
+    ],
+  },
+  {
+    title: 'Agentic UX 进入半导体制造：工程师工作流的新底层',
+    text: 'NVIDIA 宣布与 TSMC、SK 海力士、三星、联发科等全球工业软件巨头合作，将 Agentic AI 嵌入设计、工程和制造软件。原本依赖人工操作的复杂工作流，正被长时间运行的 AI Agent 接管，半导体制造 UX 迎来新的交互底层。',
+    sources: [
+      { name: 'NVIDIA IR', url: 'https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Global-Industrial-Software-Giants-Bring-Design-Engineering-and-Manufacturing-Into-the-AI-Era/default.aspx' },
+    ],
+  },
+];
+
 export const policy = [
   { tag: 'U.S. Congress', title: 'MATCH Act：封堵 DUV 对华出口', text: '4 月 2 日众议院推出 MATCH Act，目标收紧 ASML DUV 光刻机对华出口，施压荷兰、日本盟友全面对齐美国管制标准。JPMorgan 估计若实施，ASML EPS 可能下降 10%。' },
   { tag: 'U.S. Tariff', title: 'Section 232 半导体关税生效', text: '1 月 15 日起对特定先进芯片征收 25% 关税（涵盖 Nvidia H200、AMD MI325X 等），但豁免数据中心、研发等场景。7 月 1 日将评估是否扩大范围。' },

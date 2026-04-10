@@ -1,5 +1,5 @@
 import PptxGenJS from 'pptxgenjs';
-import { meta, digest, market, equipment, techFrontier, chinaSection, academic, aiSmart, policy, landscape, reading, calendar } from './data.mjs';
+import { meta, digest, market, equipment, techFrontier, chinaSection, academic, aiSmart, designTrends, policy, landscape, reading, calendar } from './data.mjs';
 
 const pptx = new PptxGenJS();
 pptx.defineLayout({ name: 'A4L', width: 13.33, height: 7.5 }); // 16:9
@@ -45,7 +45,7 @@ function addSectionHeader(slide, y, num, titleCN, subtitleEN) {
   return y + 0.85;
 }
 
-const TOTAL = 12;
+const TOTAL = 13;
 
 // ==================== SLIDE 1: COVER ====================
 const s1 = pptx.addSlide();
@@ -219,11 +219,24 @@ for (const a of aiSmart) {
   y9 += 0.12;
 }
 
-// ==================== SLIDE 10: POLICY ====================
+// ==================== SLIDE 10: DESIGN TRENDS ====================
+const sDesign = pptx.addSlide();
+addPageHeader(sDesign);
+addPageFooter(sDesign, 10, TOTAL);
+let yDesign = addSectionHeader(sDesign, 0.7, '08', '产品与体验设计', 'Product & Experience Design');
+for (const a of designTrends.slice(0, 4)) {
+  sDesign.addText(a.title, { x: MARGIN_L, y: yDesign, w: CONTENT_W, h: 0.25, fontSize: 12, color: DARK, fontFace: FONT, bold: true });
+  sDesign.addText(a.text, { x: MARGIN_L, y: yDesign + 0.28, w: CONTENT_W, h: 0.55, fontSize: 10, color: BODY, fontFace: FONT, lineSpacingMultiple: 1.6 });
+  yDesign += 1.0;
+  sDesign.addShape(pptx.ShapeType.line, { x: MARGIN_L, y: yDesign, w: CONTENT_W, h: 0, line: { color: BORDER, width: 0.3 } });
+  yDesign += 0.12;
+}
+
+// ==================== SLIDE 11: POLICY ====================
 const s10 = pptx.addSlide();
 addPageHeader(s10);
-addPageFooter(s10, 10, TOTAL);
-let y10 = addSectionHeader(s10, 0.7, '08', '政策与地缘', 'Policy & Geopolitics');
+addPageFooter(s10, 11, TOTAL);
+let y10 = addSectionHeader(s10, 0.7, '09', '政策与地缘', 'Policy & Geopolitics');
 for (const p of policy) {
   s10.addShape(pptx.ShapeType.rect, { x: MARGIN_L, y: y10, w: 1, h: 0.2, fill: { color: TAG_BG }, rectRadius: 0.02 });
   s10.addText(p.tag.toUpperCase(), { x: MARGIN_L + 0.05, y: y10, w: 0.9, h: 0.2, fontSize: 6.5, color: SECONDARY, fontFace: MONO, align: 'center' });
@@ -240,10 +253,10 @@ s10.addShape(pptx.ShapeType.rect, { x: MARGIN_L, y: y10, w: 0.04, h: 0.8, fill: 
 s10.addText('FAB EXPANSION', { x: MARGIN_L + 0.15, y: y10 + 0.05, w: 3, h: 0.15, fontSize: 6.5, color: TERTIARY, fontFace: MONO });
 s10.addText(landscape, { x: MARGIN_L + 0.15, y: y10 + 0.2, w: CONTENT_W - 0.3, h: 0.55, fontSize: 9.5, color: BODY, fontFace: FONT, lineSpacingMultiple: 1.5 });
 
-// ==================== SLIDE 11: READING ====================
+// ==================== SLIDE 12: READING ====================
 const s11 = pptx.addSlide();
 addPageHeader(s11);
-addPageFooter(s11, 11, TOTAL);
+addPageFooter(s11, 12, TOTAL);
 let y11 = addSectionHeader(s11, 0.7, '10', '值得一读', 'Worth Reading');
 reading.forEach((r, i) => {
   s11.addText(String(i + 1).padStart(2, '0'), { x: MARGIN_L, y: y11, w: 0.4, h: 0.3, fontSize: 18, color: BORDER, fontFace: MONO });
@@ -255,10 +268,10 @@ reading.forEach((r, i) => {
   y11 += 0.1;
 });
 
-// ==================== SLIDE 12: CALENDAR ====================
+// ==================== SLIDE 13: CALENDAR ====================
 const s12 = pptx.addSlide();
 addPageHeader(s12);
-addPageFooter(s12, 12, TOTAL);
+addPageFooter(s12, 13, TOTAL);
 let y12 = addSectionHeader(s12, 0.7, '11', '关键日程', 'Upcoming Events');
 for (const c of calendar) {
   s12.addText(c.date, { x: MARGIN_L, y: y12, w: 1, h: 0.35, fontSize: 8, color: TERTIARY, fontFace: MONO });

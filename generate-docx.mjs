@@ -4,7 +4,7 @@ import { Document, Packer, Paragraph, TextRun, Header, Footer, AlignmentType,
          LevelFormat } from 'docx';
 import fs from 'fs';
 import { meta, digest, market, equipment, techFrontier, chinaSection,
-         academic, aiSmart, policy, landscape, reading, calendar } from './data.mjs';
+         academic, aiSmart, designTrends, policy, landscape, reading, calendar } from './data.mjs';
 
 // ---- Colors ----
 const RED = 'c0392b';
@@ -297,9 +297,20 @@ for (const a of aiSmart) {
   );
 }
 
-// ==================== 08 POLICY ====================
+// ==================== 08 DESIGN TRENDS ====================
 children.push(new Paragraph({ children: [new PageBreak()] }));
-children.push(...sectionTitle('08', '政策与地缘', 'Policy & Geopolitics'));
+children.push(...sectionTitle('08', '产品与体验设计', 'Product & Experience Design'));
+for (const a of designTrends) {
+  children.push(
+    new Paragraph({ spacing: { after: 80 }, children: [new TextRun({ text: a.title, font: FONT, size: 24, bold: true, color: DARK })] }),
+    bodyText(a.text),
+    dividerLine(),
+  );
+}
+
+// ==================== 09 POLICY ====================
+children.push(new Paragraph({ children: [new PageBreak()] }));
+children.push(...sectionTitle('09', '政策与地缘', 'Policy & Geopolitics'));
 for (const p of policy) {
   children.push(
     new Paragraph({ spacing: { after: 40 }, children: [new TextRun({ text: p.tag.toUpperCase(), font: MONO, size: 13, color: SECONDARY })] }),
@@ -310,12 +321,12 @@ for (const p of policy) {
 }
 
 // Landscape box
-children.push(...sectionTitle('09', '产业格局', 'Industry Landscape'));
+children.push(...sectionTitle('10', '产业格局', 'Industry Landscape'));
 children.push(highlightBox('Fab Expansion', landscape));
 
-// ==================== 10 READING ====================
+// ==================== 11 READING ====================
 children.push(new Paragraph({ children: [new PageBreak()] }));
-children.push(...sectionTitle('10', '值得一读', 'Worth Reading'));
+children.push(...sectionTitle('11', '值得一读', 'Worth Reading'));
 reading.forEach((r, i) => {
   children.push(new Paragraph({
     spacing: { before: 200, after: 40 },
@@ -329,8 +340,8 @@ reading.forEach((r, i) => {
   children.push(dividerLine());
 });
 
-// ==================== 11 CALENDAR ====================
-children.push(...sectionTitle('11', '关键日程', 'Upcoming Events'));
+// ==================== 12 CALENDAR ====================
+children.push(...sectionTitle('12', '关键日程', 'Upcoming Events'));
 
 const calBorder = { style: BorderStyle.SINGLE, size: 1, color: LIGHT_BDR };
 const calBorders = { top: calBorder, bottom: calBorder, left: calBorder, right: calBorder };
