@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semiconductor Weekly | 2026 W15</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700;900&display=swap');
+  @font-face { font-family: 'HarmonyOS Sans'; src: url('https://cdn.jsdelivr.net/npm/harmonyos-sans@1.0.0/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Regular.woff2') format('woff2'); font-weight: 400; }
+  @font-face { font-family: 'HarmonyOS Sans'; src: url('https://cdn.jsdelivr.net/npm/harmonyos-sans@1.0.0/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Medium.woff2') format('woff2'); font-weight: 500; }
+  @font-face { font-family: 'HarmonyOS Sans'; src: url('https://cdn.jsdelivr.net/npm/harmonyos-sans@1.0.0/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Bold.woff2') format('woff2'); font-weight: 700; }
+  @font-face { font-family: 'HarmonyOS Sans'; src: url('https://cdn.jsdelivr.net/npm/harmonyos-sans@1.0.0/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Light.woff2') format('woff2'); font-weight: 300; }
+  @font-face { font-family: 'HarmonyOS Sans'; src: url('https://cdn.jsdelivr.net/npm/harmonyos-sans@1.0.0/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Black.woff2') format('woff2'); font-weight: 900; }
+
+  :root {
+    --black: #141414; --dark: #1a1a1a; --body: #333; --secondary: #666;
+    --tertiary: #999; --border: #e0e0e0; --light: #efefef; --bg: #fafaf8;
+    --white: #fff; --red: #c0392b; --green: #16a34a; --down-red: #dc2626;
+    --tag-bg: #f5f5f3; --font: 'HarmonyOS Sans', -apple-system, 'PingFang SC', sans-serif;
+    --mono: 'JetBrains Mono', 'Menlo', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--font); color: var(--body); background: var(--white); line-height: 1.8; }
+
+  /* Cover zone: white bg */
+  .cover-zone { background: var(--white); }
+
+  /* Content zone: subtle warm bg with top divider */
+  .content-zone {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding-top: 64px;
+    margin-top: 0;
+  }
+
+  /* ===== NAV BAR ===== */
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+  }
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    height: 56px;
+  }
+  .nav-brand {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--dark);
+  }
+  .nav-right { display: flex; gap: 8px; align-items: center; }
+  .nav-date { font-family: var(--mono); font-size: 0.7rem; color: var(--tertiary); margin-right: 16px; }
+  .btn-download {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 14px; border-radius: 6px; font-size: 0.72rem; font-weight: 500;
+    text-decoration: none; border: 1px solid var(--border); color: var(--dark);
+    background: var(--white); transition: all 0.15s; cursor: pointer;
+    font-family: var(--font);
+  }
+  .btn-download:hover { border-color: var(--dark); background: var(--dark); color: var(--white); }
+  .btn-download svg { width: 14px; height: 14px; }
+  .btn-download.primary { background: var(--dark); color: var(--white); border-color: var(--dark); }
+  .btn-download.primary:hover { background: var(--black); }
+
+  /* ===== HERO ===== */
+  .hero {
+    max-width: 760px; margin: 0 auto; padding: 80px 24px 64px;
+  }
+  .hero-label {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em;
+    color: var(--red); text-transform: uppercase; margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 2.8rem; font-weight: 900; color: var(--black);
+    line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 28px;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem; font-weight: 300; color: var(--secondary);
+    line-height: 1.85; border-left: 2px solid var(--border); padding-left: 20px;
+    max-width: 580px;
+  }
+  .hero-meta {
+    margin-top: 40px; display: flex; gap: 24px; flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    font-family: var(--mono); font-size: 0.7rem; color: var(--tertiary);
+    padding: 5px 12px; background: var(--white); border-radius: 4px;
+    border: 1px solid var(--light);
+  }
+
+  /* ===== TOC ===== */
+  .toc {
+    max-width: 760px; margin: 0 auto; padding: 0 24px 48px;
+  }
+  .toc-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  .toc-item {
+    display: flex; align-items: baseline; gap: 10px;
+    padding: 10px 14px; border-radius: 6px;
+    text-decoration: none; color: var(--body);
+    transition: background 0.12s;
+  }
+  .toc-item:hover { background: var(--tag-bg); }
+  .toc-num { font-family: var(--mono); font-size: 0.68rem; color: var(--red); }
+  .toc-label { font-size: 0.85rem; font-weight: 500; }
+
+  /* ===== CONTENT ===== */
+  .content { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  .section { margin-bottom: 64px; }
+  .section-head { margin-bottom: 32px; }
+  .section-num {
+    font-family: var(--mono); font-size: 0.68rem; color: var(--red);
+    letter-spacing: 0.08em; display: block; margin-bottom: 4px;
+  }
+  .section-title { font-size: 1.6rem; font-weight: 700; color: var(--black); margin-bottom: 4px; }
+  .section-sub { font-family: var(--mono); font-size: 0.72rem; color: var(--tertiary); text-transform: uppercase; }
+
+  /* Digest */
+  .digest { list-style: none; }
+  .digest li {
+    padding: 16px 0; border-bottom: 1px solid var(--light);
+    display: flex; gap: 14px; align-items: baseline;
+  }
+  .digest-num { font-family: var(--mono); font-size: 0.75rem; color: var(--tertiary); width: 22px; flex-shrink: 0; }
+  .digest-tag {
+    font-family: var(--mono); font-size: 0.62rem; color: var(--secondary);
+    background: var(--tag-bg); padding: 2px 8px; border-radius: 3px;
+    margin-right: 8px; flex-shrink: 0;
+  }
+  .digest-text { font-size: 0.95rem; color: var(--dark); font-weight: 500; line-height: 1.7; }
+
+  /* Market */
+  .sox-bar {
+    background: var(--tag-bg); border-left: 3px solid var(--black);
+    padding: 16px 20px; display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 24px; border-radius: 0 6px 6px 0;
+  }
+  .sox-label { font-size: 0.85rem; color: var(--secondary); }
+  .sox-label strong { color: var(--dark); }
+  .sox-value { font-family: var(--mono); font-size: 1.5rem; font-weight: 500; color: var(--black); }
+  .sox-sub { font-family: var(--mono); font-size: 0.72rem; color: var(--tertiary); text-align: right; }
+
+  .stock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .stock-grid { grid-template-columns: 1fr; } }
+  .stock-card {
+    padding: 20px; border: 1px solid var(--light); border-radius: 8px;
+    background: var(--white); transition: box-shadow 0.15s;
+  }
+  .stock-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .stock-ticker { font-family: var(--mono); font-size: 0.7rem; color: var(--tertiary); }
+  .stock-name { font-size: 0.82rem; font-weight: 500; color: var(--dark); margin-bottom: 10px; }
+  .stock-price { font-family: var(--mono); font-size: 1.4rem; font-weight: 500; color: var(--black); }
+  .stock-change { font-family: var(--mono); font-size: 0.82rem; font-weight: 500; margin-top: 4px; }
+  .stock-change.up { color: var(--green); }
+  .stock-change.down { color: var(--down-red); }
+  .stock-note { font-size: 0.72rem; color: var(--tertiary); margin-top: 6px; }
+
+  /* Company blocks */
+  .company { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--light); }
+  .company:last-child { border-bottom: none; }
+  .company-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+  .company-name { font-size: 1.1rem; font-weight: 700; color: var(--black); }
+  .company-ticker { font-family: var(--mono); font-size: 0.7rem; color: var(--tertiary); }
+  .company-hl {
+    border-left: 3px solid var(--red); padding: 10px 16px; margin-bottom: 14px;
+    background: linear-gradient(90deg, #fdf8f7, transparent); border-radius: 0 6px 6px 0;
+    font-size: 0.92rem; color: var(--dark); font-weight: 500; line-height: 1.7;
+  }
+  .event { display: flex; gap: 12px; align-items: baseline; padding: 6px 0; font-size: 0.9rem; }
+  .event-date { font-family: var(--mono); font-size: 0.7rem; color: var(--tertiary); min-width: 50px; }
+  .event-text { color: var(--body); line-height: 1.7; }
+
+  /* Tech / Academic / AI items */
+  .item { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--light); }
+  .item:last-child { border-bottom: none; }
+  .item-title { font-size: 1.02rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .item-text { font-size: 0.92rem; color: var(--body); line-height: 1.8; }
+  /* Source link token — unified across ALL sections */
+  .item-sources { margin-top: 6px; }
+  .item-sources a,
+  a.item-sources {
+    font-family: var(--mono); font-size: 0.72rem; color: var(--tertiary);
+    text-decoration: none; border-bottom: 1px dotted var(--border); margin-right: 10px;
+    transition: color 0.12s, border-color 0.12s;
+  }
+  .item-sources a:hover,
+  a.item-sources:hover { color: var(--red); border-bottom-color: var(--red); }
+
+  /* Highlight box */
+  .hl-box {
+    background: var(--tag-bg); border-left: 3px solid var(--black);
+    padding: 20px 24px; margin: 20px 0; border-radius: 0 6px 6px 0;
+  }
+  .hl-box .label { font-family: var(--mono); font-size: 0.65rem; color: var(--tertiary); text-transform: uppercase; margin-bottom: 8px; }
+  .hl-box p { font-size: 0.92rem; line-height: 1.8; color: var(--body); }
+
+  /* Policy */
+  .policy-tag {
+    display: inline-block; font-family: var(--mono); font-size: 0.62rem;
+    letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 10px;
+    border-radius: 3px; margin-bottom: 8px;
+  }
+  .policy-tag.us { color: #1e40af; background: #eff6ff; }
+  .policy-tag.cn { color: var(--red); background: #fdf2f2; }
+  .policy-tag.global { color: #7c3aed; background: #f5f3ff; }
+
+  /* Reading */
+  .reading { display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--light); }
+  .reading:last-child { border-bottom: none; }
+  .reading-num { font-family: var(--mono); font-size: 1.5rem; color: var(--border); line-height: 1; padding-top: 4px; }
+  .reading-title {
+    font-size: 1.02rem; font-weight: 700; color: var(--dark); margin-bottom: 4px;
+    display: block; text-decoration: none; border-bottom: none;
+    transition: color 0.12s;
+  }
+  a.reading-title:hover { color: var(--red); }
+  .reading-source { font-family: var(--mono); font-size: 0.7rem; color: var(--tertiary); margin-bottom: 6px; }
+  .reading-desc { font-size: 0.92rem; color: var(--secondary); line-height: 1.8; }
+
+  /* Calendar */
+  .cal-grid { display: grid; grid-template-columns: 70px 1fr; }
+  .cal-date {
+    font-family: var(--mono); font-size: 0.75rem; color: var(--tertiary);
+    padding: 12px 0; border-bottom: 1px solid var(--light);
+  }
+  .cal-event {
+    font-size: 0.9rem; color: var(--body); padding: 12px 0 12px 16px;
+    border-bottom: 1px solid var(--light); border-left: 1px solid var(--light);
+  }
+  .cal-event strong { color: var(--dark); }
+
+  /* Footer */
+  .site-footer {
+    max-width: 760px; margin: 48px auto 0; padding: 24px 24px 48px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 0.65rem; color: var(--tertiary);
+  }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 2rem; }
+    .nav-date { display: none; }
+    .stock-grid { grid-template-columns: 1fr; }
+    .toc-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">Semiconductor Weekly</div>
+    <div class="nav-right">
+      <span class="nav-date">2026.04.07 — 04.09</span>
+      <a class="btn-download" href="report-2026-W15.pdf" download>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v9m0 0l-3-3m3 3l3-3M3 13h10"/></svg>
+        PDF
+      </a>
+      <a class="btn-download" href="report-2026-W15.pptx" download>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v9m0 0l-3-3m3 3l3-3M3 13h10"/></svg>
+        PPT
+      </a>
+      <a class="btn-download" href="report-2026-W15.docx" download>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v9m0 0l-3-3m3 3l3-3M3 13h10"/></svg>
+        Word
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== COVER ZONE (white bg) ===== -->
+<div class="cover-zone">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">Weekly Briefing</div>
+  <h1>MATCH Act 冲击波，<br>设备股剧烈震荡</h1>
+  <div class="hero-subtitle">美国国会推出新芯片设备出口管制法案，ASML 单日跌近 5%；AMAT 发布两款 GAA 2nm 沉积系统，股价反弹 8%；中国设备厂商在 SEMICON China 密集发布新品。</div>
+  <div class="hero-meta">
+    <span class="hero-meta-item">Vol.01 / No.15</span>
+    <span class="hero-meta-item">2026.04.07 — 04.09</span>
+    <span class="hero-meta-item">Confidential</span>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <div class="toc-grid">
+    <a class="toc-item" href="#digest"><span class="toc-num">01</span><span class="toc-label">本周速览</span></a>
+    <a class="toc-item" href="#market"><span class="toc-num">02</span><span class="toc-label">市场脉搏</span></a>
+    <a class="toc-item" href="#equipment"><span class="toc-num">03</span><span class="toc-label">设备巨头动态</span></a>
+    <a class="toc-item" href="#tech"><span class="toc-num">04</span><span class="toc-label">前沿技术</span></a>
+    <a class="toc-item" href="#china"><span class="toc-num">05</span><span class="toc-label">中国半导体动态</span></a>
+    <a class="toc-item" href="#academic"><span class="toc-num">06</span><span class="toc-label">学术与研究前沿</span></a>
+    <a class="toc-item" href="#ai"><span class="toc-num">07</span><span class="toc-label">AI 与智能化</span></a>
+    <a class="toc-item" href="#policy"><span class="toc-num">08</span><span class="toc-label">政策与地缘</span></a>
+    <a class="toc-item" href="#reading"><span class="toc-num">10</span><span class="toc-label">值得一读</span></a>
+    <a class="toc-item" href="#calendar"><span class="toc-num">11</span><span class="toc-label">关键日程</span></a>
+  </div>
+</div>
+
+</div><!-- end .cover-zone -->
+
+<!-- ===== CONTENT ZONE (warm bg) ===== -->
+<div class="content-zone">
+<div class="content">
+
+<!-- 01 DIGEST -->
+<div class="section" id="digest">
+  <div class="section-head">
+    <span class="section-num">01</span>
+    <h2 class="section-title">本周速览</h2>
+    <div class="section-sub">Weekly Digest</div>
+  </div>
+  <ul class="digest">
+    <li><span class="digest-num">01</span><span class="digest-tag">POLICY</span><span class="digest-text">美国众议院推出 <strong>MATCH Act</strong>，拟封堵 ASML DUV 对华出口通道，ASML 单日跌 4.7%</span><div class="item-sources"><a href="https://www.bloomberg.com/news/articles/2026-04-02/us-lawmakers-propose-crackdown-on-sales-of-chip-tools-to-china" target="_blank">Bloomberg</a></div></li>
+    <li><span class="digest-num">02</span><span class="digest-tag">AMAT</span><span class="digest-text">Applied Materials 发布两款面向 <strong>GAA 2nm</strong> 的沉积系统，股价当日涨 8%</span><div class="item-sources"><a href="https://www.stocktitan.net/news/AMAT/applied-materials-introduces-deposition-systems-for-angstrom-era-7v0938tplllx.html" target="_blank">StockTitan</a></div></li>
+    <li><span class="digest-num">03</span><span class="digest-tag">SEMI</span><span class="digest-text">SEMI 发布数据：2025 全球半导体设备销售 <strong>$1,351 亿</strong>，预计 2027 年达 $1,560 亿创新高</span><div class="item-sources"><a href="https://www.semi.org/en/semi-press-release/semi-projects-double-digit-growth-in-global-300mm-fab-equipment-spending-for-2026-and-2027" target="_blank">SEMI</a></div></li>
+    <li><span class="digest-num">04</span><span class="digest-tag">CHINA</span><span class="digest-text">北方华创、中微公司在 <strong>SEMICON China 2026</strong> 密集发布新品，北方华创 2026 年订单目标 600 亿</span><div class="item-sources"><a href="https://36kr.com/p/3739559184039940" target="_blank">36Kr</a></div></li>
+    <li><span class="digest-num">05</span><span class="digest-tag">HIGH-NA</span><span class="digest-text">Imec 接收 ASML <strong>EXE:5200</strong> High-NA EUV 系统，预计 Q4 完成验证</span><div class="item-sources"><a href="https://www.imec-int.com/en/press/imec-receives-worlds-most-advanced-high-na-euv-system" target="_blank">Imec</a></div></li>
+  </ul>
+</div>
+
+<!-- 02 MARKET -->
+<div class="section" id="market">
+  <div class="section-head">
+    <span class="section-num">02</span>
+    <h2 class="section-title">市场脉搏</h2>
+    <div class="section-sub">Market Pulse</div>
+  </div>
+  <div class="sox-bar">
+    <div><span class="sox-label"><strong>SOX</strong> 费城半导体指数</span></div>
+    <div style="text-align:right"><div class="sox-value">7,877</div><div class="sox-sub">52W High: 8,498 · -7.3% off peak</div></div>
+  </div>
+  <div class="stock-grid">
+    <div class="stock-card"><div class="stock-ticker">AMAT</div><div class="stock-name">Applied Materials</div><div class="stock-price">$352.62</div><div class="stock-change up">&#9650; +8.0% (Apr 8)</div><div class="stock-note">GAA 新品发布提振</div></div>
+    <div class="stock-card"><div class="stock-ticker">LRCX</div><div class="stock-name">Lam Research</div><div class="stock-price">$235.00</div><div class="stock-change up">&#9650; +9.5% (Apr 8)</div><div class="stock-note">YTD +37.6%，连续四季超预期</div></div>
+    <div class="stock-card"><div class="stock-ticker">ASML</div><div class="stock-name">ASML Holding</div><div class="stock-price">$1,317</div><div class="stock-change down">&#9660; -4.7% (Apr 7)</div><div class="stock-note">MATCH Act 冲击，中国营收占 29%</div></div>
+    <div class="stock-card"><div class="stock-ticker">KLAC</div><div class="stock-name">KLA Corporation</div><div class="stock-price">$1,661</div><div class="stock-change up">&#9650; +7.4% (Apr 8)</div><div class="stock-note">YTD +30.3%，$70 亿回购计划</div></div>
+  </div>
+</div>
+
+<!-- 03 EQUIPMENT -->
+<div class="section" id="equipment">
+  <div class="section-head">
+    <span class="section-num">03</span>
+    <h2 class="section-title">设备巨头动态</h2>
+    <div class="section-sub">Equipment Giants</div>
+  </div>
+  <div class="company"><div class="company-head"><span class="company-name">Applied Materials</span><span class="company-ticker">NASDAQ: AMAT</span></div><div class="company-hl">4 月 8 日发布 <strong>Precision Selective Nitride PECVD</strong> 和 <strong>Trillium ALD</strong> 两款沉积系统，面向 GAA 2nm 及以下节点的原子级精度制造。</div><div class="event"><span class="event-date">Apr 8</span><span class="event-text">新品发布后股价当日大涨约 <strong>8%</strong>，市场反应积极 <a class="item-sources" href="https://seekingalpha.com/news/4573357-applied-materials-surges-as-it-unveils-new-chipmaking-systems" target="_blank">SeekingAlpha</a></span></div><div class="event"><span class="event-date">Q1</span><span class="event-text">Q1 FY2026 EPS $2.38（超预期 $0.17），营收 $70.1 亿 <a class="item-sources" href="https://www.trendforce.com/news/2026/02/13/news-applied-materials-guides-april-quarter-above-estimates-sees-20-semi-growth-in-2026-dram-leads/" target="_blank">TrendForce</a></span></div><div class="event"><span class="event-date">展望</span><span class="event-text">管理层预计 2026 年半导体行业增长 20%+，<strong>DRAM 领涨</strong></span></div></div>
+  <div class="company"><div class="company-head"><span class="company-name">Lam Research</span><span class="company-ticker">NASDAQ: LRCX</span></div><div class="company-hl">连续四个季度超预期，Q2 FY2026 营收 $53.4 亿（同比 +22%），Q3 指引 $57 亿显示持续加速。<div class="item-sources"><a href="https://www.zacks.com/commentary/2895120/bull-of-the-day-lam-research-lrcx" target="_blank">Zacks</a></div></div><div class="event"><span class="event-date">Apr 7</span><span class="event-text">Morgan Stanley 上调目标价至 <strong>$260</strong> <a class="item-sources" href="https://finance.yahoo.com/markets/stocks/articles/dear-lam-research-investors-mark-154010553.html" target="_blank">Yahoo Finance</a></span></div><div class="event"><span class="event-date">Apr 22</span><span class="event-text">即将发布 Q3 财报，关注 GAA 节奏及<strong>中国收入占比</strong></span></div></div>
+  <div class="company"><div class="company-head"><span class="company-name">ASML Holding</span><span class="company-ticker">EURONEXT: ASML</span></div><div class="company-hl">MATCH Act 冲击下股价单日跌 4.7%，但随后因美伊停火反弹 6.35%。High-NA EUV 进入商用部署阶段。<div class="item-sources"><a href="https://www.cnbc.com/2026/04/07/asml-shares-today-us-chip-export-curbs-china.html" target="_blank">CNBC</a></div></div><div class="event"><span class="event-date">订单</span><span class="event-text">SK Hynix 承诺 $80 亿采购 ~30 台 EUV；Samsung 计划 $40 亿采购 ~20 台 <a class="item-sources" href="https://247wallst.com/investing/2026/04/06/asml-revenue-is-about-to-explode-higher-again/" target="_blank">24/7 Wall St</a></span></div><div class="event"><span class="event-date">High-NA</span><span class="event-text">首批商用 <strong>EXE:5200B</strong> 已交付 Intel，2026 预计出货 5-10 台 <a class="item-sources" href="https://www.tomshardware.com/tech-industry/semiconductors/intel-installs-industrys-first-commercial-high-na-euv-lithography-tool-asml-twinscan-exe-5200b-sets-the-stage-for-14a" target="_blank">Tom's Hardware</a></span></div><div class="event"><span class="event-date">Apr 15</span><span class="event-text">Q1 财报发布 | 指引：2026 净销售额 340-390 亿欧元</span></div></div>
+  <div class="company"><div class="company-head"><span class="company-name">Tokyo Electron / KLA</span><span class="company-ticker">TSE: 8035 / NASDAQ: KLAC</span></div><div class="event"><span class="event-date">TEL</span><span class="event-text">先进芯片设备占比提升至 <strong>40%</strong>，资本支出增 48% 至 2400 亿日元创新高 <a class="item-sources" href="https://www.trendforce.com/news/2026/01/09/news-tokyo-electron-reportedly-raises-fy26-capex-48-to-record-high-bets-on-dram-etching-demand/" target="_blank">TrendForce</a></span></div><div class="event"><span class="event-date">KLA</span><span class="event-text">宣布 <strong>$70 亿</strong>回购计划，连续第 17 年提高股息 <a class="item-sources" href="https://stockstory.org/us/stocks/nasdaq/klac/news/why-up-down/why-is-kla-corporation-klac-stock-soaring-today-3" target="_blank">StockStory</a></span></div></div>
+</div>
+
+<!-- 04 TECH -->
+<div class="section" id="tech">
+  <div class="section-head">
+    <span class="section-num">04</span>
+    <h2 class="section-title">前沿技术</h2>
+    <div class="section-sub">Tech Frontier</div>
+  </div>
+  <div class="item"><div class="item-title">GAA 与背面供电进入量产倒计时</div><div class="item-text">TSMC N2P（2nm + 背面供电）计划 2026 下半年投产；A16（1.6nm + Super Power Rail）紧随其后。背面供电可降低电压降和供电噪声，但与 GAA 集成带来应力管理挑战。</div><div class="item-sources"><a href="https://semiengineering.com/backside-power-delivery-nears-production/" target="_blank">SemiEngineering</a><a href="https://newsroom.lamresearch.com/transistor-channel-stress-backside-power-delivery-networks" target="_blank">Lam Research</a></div></div>
+  <div class="item"><div class="item-title">High-NA EUV 从研发走向量产</div><div class="item-text">Imec 接收 EXE:5200 系统（3 月 18 日），Q4 完成验证。Intel 安装商用 EXE:5200B 用于 14A 节点。2026 年预计交付 5-10 台，2028 年增至 20+ 台。</div><div class="item-sources"><a href="https://www.imec-int.com/en/press/imec-receives-worlds-most-advanced-high-na-euv-system" target="_blank">Imec</a><a href="https://research.ibm.com/blog/spie-2026-below-2-nm" target="_blank">IBM Research</a><a href="https://www.tomshardware.com/tech-industry/semiconductors/intel-installs-industrys-first-commercial-high-na-euv-lithography-tool-asml-twinscan-exe-5200b-sets-the-stage-for-14a" target="_blank">Tom's Hardware</a></div></div>
+  <div class="item"><div class="item-title">SEMI 全球设备支出展望</div><div class="item-text">300mm 设备支出预计 2026 年增长 18% 至 $1,330 亿，2027 年增长 14% 至 $1,510 亿。AI、先进逻辑、存储及先进封装为主要驱动力。</div><div class="item-sources"><a href="https://www.semi.org/en/semi-press-release/semi-projects-double-digit-growth-in-global-300mm-fab-equipment-spending-for-2026-and-2027" target="_blank">SEMI</a></div></div>
+</div>
+
+<!-- 05 CHINA -->
+<div class="section" id="china">
+  <div class="section-head">
+    <span class="section-num">05</span>
+    <h2 class="section-title">中国半导体动态</h2>
+    <div class="section-sub">China Semiconductor</div>
+  </div>
+  <div class="company"><div class="company-head"><span class="company-name">北方华创</span><span class="company-ticker">002371.SZ</span></div><div class="company-hl">SEMICON China 2026 发布三款重磅设备，2026 年订单目标 <strong>600 亿元</strong>，有望跻身全球设备商前五。<div class="item-sources"><a href="https://36kr.com/p/3739559184039940" target="_blank">36Kr</a><a href="https://finance.sina.com.cn/stock/bxjj/2026-03-30/doc-inhsuknu9640085.shtml" target="_blank">新浪财经</a></div></div><div class="event"><span class="event-date">新品</span><span class="event-text">12 英寸 <strong>NMC612H</strong> ICP 刻蚀、<strong>Qomola HPD30</strong> 混合键合、<strong>Ausip T830</strong> TSV 电镀</span></div><div class="event"><span class="event-date">验证</span><span class="event-text">刻蚀设备已在 SMIC <strong>7nm 产线</strong>测试 <a class="item-sources" href="https://www.scmp.com/tech/big-tech/article/3348044/chinas-top-chip-foundry-smic-unveils-action-plan-seizing-new-growth-opportunities" target="_blank">SCMP</a></span></div></div>
+  <div class="company"><div class="company-head"><span class="company-name">中微公司</span><span class="company-ticker">688012.SH</span></div><div class="event"><span class="event-date">新品</span><span class="event-text"><strong>Primo Angnova</strong> ICP 刻蚀、<strong>Primo Domingo</strong> 高选择性刻蚀、Smart RF Match、Preciomo Udx Micro LED MOCVD <a class="item-sources" href="https://news.mydrivers.com/1/1111/1111592.htm" target="_blank">快科技</a></span></div></div>
+  <div class="company"><div class="company-head"><span class="company-name">新凯来</span><span class="company-ticker">深圳国资</span></div><div class="event"><span class="event-date">新品</span><span class="event-text">SEMICON China 发布 EPI、ALD、PVD、ETCH、CVD 五款设备，对标 5nm <a class="item-sources" href="https://caifuhao.eastmoney.com/news/20260324152840990924010" target="_blank">东方财富</a></span></div></div>
+  <div class="hl-box"><div class="label">Policy & Outlook</div><p>中国要求新建产能使用不低于 <strong>50% 国产设备</strong>，目标 2030 年半导体自给率达 80%（现约 33%）。2025 年中国 WFE 预计同比 -13%，2026 年回升 +5%。</p><div class="item-sources"><a href="https://www.electronicsweekly.com/news/business/china-makes-new-plan-for-semiconductor-self-sufficiency-2026-03/" target="_blank">Electronics Weekly</a><a href="https://www.astutegroup.com/news/general/china-accelerates-semiconductor-self-sufficiency-with-mandatory-local-equipment-use/" target="_blank">Astute Group</a></div></div>
+</div>
+
+<!-- 06 ACADEMIC -->
+<div class="section" id="academic">
+  <div class="section-head">
+    <span class="section-num">06</span>
+    <h2 class="section-title">学术与研究前沿</h2>
+    <div class="section-sub">Academic & Research</div>
+  </div>
+  <div class="item"><div class="item-title">Imec 120 层 Si/SiGe 外延堆叠突破 3D DRAM 瓶颈</div><div class="item-text">Imec 联合根特大学在 300mm 晶圆上成功堆叠 120 层交替 Si/SiGe 双层（共 241 子层），发表于 Journal of Applied Physics。</div><div class="item-sources"><a href="https://www.tomshardware.com/tech-industry/next-generation-3d-dram-approaches-reality-as-scientists-achieve-120-layer-stack-using-advanced-deposition-techniques" target="_blank">Tom's Hardware</a><a href="https://semiengineering.com/epitaxial-growth-of-up-to-120-si-sige-bilayers-in-view-of-3d-dram-applications-imec-ghent-univ/" target="_blank">SemiEngineering</a></div></div>
+  <div class="item"><div class="item-title">Nature Electronics: 碳纳米管晶体管突破 1 THz</div><div class="item-text">基于对齐碳纳米管薄膜的 MOSFET 实现截止频率超 1 THz，栅极长度 80nm，载流子迁移率超 3,000 cm&sup2;/V&middot;s。</div><div class="item-sources"><a href="https://www.nature.com/articles/s41928-025-01463-6" target="_blank">Nature Electronics</a></div></div>
+  <div class="item"><div class="item-title">Imec + Diraq: 工厂制造硅量子比特达 99%+ 保真度</div><div class="item-text">在标准半导体产线上制造的硅量子比特一致性超过 99% 精度，发表于 Nature。</div><div class="item-sources"><a href="https://www.nature.com/articles/s41586-025-09531-9" target="_blank">Nature</a></div></div>
+  <div class="item"><div class="item-title">CFET（互补 FET）路线图加速</div><div class="item-text">Imec 推进 CFET 单片集成与顺序集成方案。全芯片评估显示 CFET 相比 Nanosheet FET 可实现面积缩减 ~55%、功耗降低 ~29%。</div><div class="item-sources"><a href="https://www.imec-int.com/en/articles/imec-puts-complementary-fet-cfet-logic-technology-roadmap" target="_blank">Imec</a><a href="https://semiengineering.com/knowledge_centers/integrated-circuit/transistors/3d/cfet/" target="_blank">SemiEngineering</a></div></div>
+</div>
+
+<!-- 07 AI -->
+<div class="section" id="ai">
+  <div class="section-head">
+    <span class="section-num">07</span>
+    <h2 class="section-title">AI 与智能化</h2>
+    <div class="section-sub">AI & Smart Manufacturing</div>
+  </div>
+  <div class="item"><div class="item-title">Intel 将 AI 嵌入晶圆厂核心流程</div><div class="item-text">AI 缺陷检测精度已超人工检测员，NVIDIA NV-DINOv2 视觉模型达 98.5% die 级缺陷分类精度。先进逻辑晶圆厂每 1% 良率提升 &asymp; $1.5 亿利润。</div><div class="item-sources"><a href="https://www.eetimes.com/from-defect-images-to-die-prediction-how-intel-is-scaling-ai-in-advanced-manufacturing/" target="_blank">EE Times</a><a href="https://developer.nvidia.com/blog/optimizing-semiconductor-defect-classification-with-generative-ai-and-vision-foundation-models/" target="_blank">NVIDIA</a></div></div>
+  <div class="item"><div class="item-title">EDA 进入 Agent 时代</div><div class="item-text">Cadence 发布 <strong>ChipStack AI Agent</strong>（10x 生产力），Synopsys 推出 <strong>AgentEngineer</strong>。NVIDIA 投资 $20 亿入股 Synopsys。新锐 Cognichip 融资 $6,000 万。</div><div class="item-sources"><a href="https://www.theregister.com/2026/02/10/cadences_agentic_chip_design_tool/" target="_blank">The Register</a><a href="https://techcrunch.com/2026/04/01/cognichip-wants-ai-to-design-the-chips-that-power-ai-and-just-raised-60m-to-try/" target="_blank">TechCrunch</a><a href="https://www.tomshardware.com/tech-industry/semiconductors/nvidias-2bn-synopsys-stake-strengthens-its-push-into-ai-accelerated-chip-design" target="_blank">Tom's Hardware</a></div></div>
+  <div class="item"><div class="item-title">AI 芯片新品密集发布</div><div class="item-text"><strong>Samsung</strong> 出货首批商用 HBM4（11.7 Gbps）；<strong>Microsoft Maia 200</strong> 推理加速器（TSMC 3nm）；韩国 <strong>Rebellions</strong> 完成 $4 亿 Pre-IPO；华为 950PR 推理芯片获字节、阿里大单。</div><div class="item-sources"><a href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank">Samsung</a><a href="https://blogs.microsoft.com/blog/2026/01/26/maia-200-the-ai-accelerator-built-for-inference/" target="_blank">Microsoft</a><a href="https://techcrunch.com/2026/03/30/ai-chip-startup-rebellions-raises-400-million-at-2-3b-valuation-in-pre-ipo-round/" target="_blank">TechCrunch</a></div></div>
+  <div class="item"><div class="item-title">RISC-V 进入量产汽车</div><div class="item-text">Bosch、Infineon、Nordic、NXP、Qualcomm 五家成立德国合资公司聚焦车规 RISC-V。零跑 LingXin01 SoC 用于 ADAS；长城紫荆 M100 MCU 已搭载新车型。</div><div class="item-sources"><a href="https://www.eetimes.com/automotive-industry-charts-new-course-with-risc-v/" target="_blank">EE Times</a><a href="https://www.yolegroup.com/strategy-insights/will-risc-v-reduce-auto-mcus-future-risk/" target="_blank">Yole Group</a></div></div>
+  <div class="hl-box"><div class="label">Capital Flow</div><p>四大超算巨头 2026 年 AI 基础设施资本支出计划达 <strong>$6,500 亿</strong>，同比增 71%。Intel 加入 Musk 的 <strong>Terafab</strong> 项目（$250 亿），贡献 18A 工艺。</p><div class="item-sources"><a href="https://www.deloitte.com/us/en/insights/industry/technology/technology-media-telecom-outlooks/semiconductor-industry-outlook.html" target="_blank">Deloitte</a><a href="https://thenextweb.com/news/intel-terafab-elon-musk-foundry-partnership" target="_blank">TNW</a></div></div>
+</div>
+
+<!-- 08 POLICY -->
+<div class="section" id="policy">
+  <div class="section-head">
+    <span class="section-num">08</span>
+    <h2 class="section-title">政策与地缘</h2>
+    <div class="section-sub">Policy & Geopolitics</div>
+  </div>
+  <div class="item"><span class="policy-tag us">U.S. Congress</span><div class="item-title">MATCH Act：封堵 DUV 对华出口</div><div class="item-text">4 月 2 日众议院推出 MATCH Act，目标收紧 ASML DUV 光刻机对华出口，施压荷兰、日本盟友全面对齐美国管制标准。JPMorgan 估计若实施，ASML EPS 可能下降 10%。</div><div class="item-sources"><a href="https://www.bloomberg.com/news/articles/2026-04-02/us-lawmakers-propose-crackdown-on-sales-of-chip-tools-to-china" target="_blank">Bloomberg</a><a href="https://seekingalpha.com/news/4573005-asml-other-semi-equipment-makers-dip-after-match-act-reaches-us-congress" target="_blank">SeekingAlpha</a></div></div>
+  <div class="item"><span class="policy-tag us">U.S. Tariff</span><div class="item-title">Section 232 半导体关税生效</div><div class="item-text">1 月 15 日起对特定先进芯片征收 25% 关税（涵盖 Nvidia H200、AMD MI325X 等），但豁免数据中心、研发等场景。7 月 1 日将评估是否扩大范围。</div><div class="item-sources"><a href="https://www.whitecase.com/insight-alert/president-trump-orders-narrowly-targeted-25-section-232-tariff-certain-advanced" target="_blank">White & Case</a></div></div>
+  <div class="item"><span class="policy-tag global">CHIPS Act</span><div class="item-title">CHIPS Act 税收优惠面临到期</div><div class="item-text">TSMC 宣布追加 $1,000 亿美国投资。但 Section 48D 先进制造投资税收抵免将于 2026 年到期，续期前景不明。</div><div class="item-sources"><a href="https://www.conference-board.org/research/ced-policy-backgrounders/the-future-of-the-CHIPS-and-Science-Act" target="_blank">Conference Board</a><a href="https://www.manufacturingdive.com/news/chips-and-science-act-tracker-semiconductor-manufacturing/734039/" target="_blank">Manufacturing Dive</a></div></div>
+  <div class="hl-box"><div class="label">Fab Expansion</div><p><strong>TSMC</strong> 亚利桑那规模扩大至最多 12 座晶圆厂 + 4 座先进封装厂；台湾同步推进 10 座新厂。全球 2025 年新开工 18 个晶圆厂项目。</p><div class="item-sources"><a href="https://www.trendforce.com/news/2026/02/23/news-tsmc-speeds-up-expansion-in-taiwan-up-to-10-fabs-reportedly-under-construction-or-starting-in-2026/" target="_blank">TrendForce</a><a href="https://www.semi.org/en/semi-press-release/eighteen-new-semiconductor-fabs-to-start-construction-in-2025-semi-reports" target="_blank">SEMI</a></div></div>
+</div>
+
+<!-- 10 READING -->
+<div class="section" id="reading">
+  <div class="section-head">
+    <span class="section-num">10</span>
+    <h2 class="section-title">值得一读</h2>
+    <div class="section-sub">Worth Reading</div>
+  </div>
+  <div class="reading"><span class="reading-num">01</span><div><a class="reading-title" href="https://www.semi.org/en/semi-press-release/semi-projects-double-digit-growth-in-global-300mm-fab-equipment-spending-for-2026-and-2027" target="_blank">SEMI: Global 300mm Fab Equipment Spending to Reach $151B by 2027</a><div class="reading-source">SEMI.org &middot; Apr 8, 2026</div><div class="reading-desc">SEMI 最新预测报告，详细拆解各地区、各环节设备投资趋势。</div></div></div>
+  <div class="reading"><span class="reading-num">02</span><div><a class="reading-title" href="https://semiengineering.com/backside-power-delivery-nears-production/" target="_blank">Backside Power Delivery Nears Production</a><div class="reading-source">SemiEngineering &middot; Mar 2026</div><div class="reading-desc">深度解析背面供电技术的量产挑战，涵盖 TSMC、Intel、Samsung 的不同技术路线。</div></div></div>
+  <div class="reading"><span class="reading-num">03</span><div><a class="reading-title" href="https://www.nature.com/articles/s41928-025-01463-6" target="_blank">THz Carbon Nanotube Transistors — Nature Electronics</a><div class="reading-source">Nature Electronics &middot; 2026</div><div class="reading-desc">碳纳米管 MOSFET 截止频率突破 1 THz，后硅时代高频器件里程碑。</div></div></div>
+  <div class="reading"><span class="reading-num">04</span><div><a class="reading-title" href="https://www.bloomberg.com/news/articles/2026-04-02/us-lawmakers-propose-crackdown-on-sales-of-chip-tools-to-china" target="_blank">MATCH Act: What It Means for Semiconductor Equipment Exports</a><div class="reading-source">Bloomberg &middot; Apr 2, 2026</div><div class="reading-desc">法案全文解读与影响分析，重点关注对 ASML DUV 业务及日荷盟友的连锁反应。</div></div></div>
+</div>
+
+<!-- 11 CALENDAR -->
+<div class="section" id="calendar">
+  <div class="section-head">
+    <span class="section-num">11</span>
+    <h2 class="section-title">关键日程</h2>
+    <div class="section-sub">Upcoming Events</div>
+  </div>
+  <div class="cal-grid">
+    <div class="cal-date">Apr 15</div><div class="cal-event"><strong>ASML</strong> Q1 2026 财报发布</div>
+    <div class="cal-date">Apr 22</div><div class="cal-event"><strong>Lam Research</strong> Q3 FY2026 财报发布</div>
+    <div class="cal-date">Apr 22</div><div class="cal-event"><strong>ASML</strong> 年度股东大会</div>
+    <div class="cal-date">Apr 24</div><div class="cal-event"><strong>ASML</strong> 每股 2.70 欧元现金股息</div>
+    <div class="cal-date">Apr 29</div><div class="cal-event"><strong>KLA</strong> Q3 FY2026 财报发布</div>
+    <div class="cal-date">Apr 30</div><div class="cal-event"><strong>Tokyo Electron</strong> 全年财报发布</div>
+    <div class="cal-date">Jun 14</div><div class="cal-event"><strong>VLSI Symposium 2026</strong> 檀香山</div>
+  </div>
+</div>
+
+</div>
+
+<footer class="site-footer">
+  <span>本报告基于公开信息编制，仅供内部参考</span>
+  <span>Semiconductor Weekly &middot; 2026</span>
+</footer>
+
+</div><!-- end .content-zone -->
+
+</body>
+</html>
