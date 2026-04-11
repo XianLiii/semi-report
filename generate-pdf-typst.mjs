@@ -310,21 +310,20 @@ const typst = `
 
 #pagebreak()
 
-// ==================== PAGE 2: DIGEST ====================
+// ==================== PAGE 2: DIGEST + MARKET (merged) ====================
 #sectionHead("01", "本周速览", "Weekly Digest")
 
 ${digest.map((d, i) => `#digestItem("${String(i+1).padStart(2,'0')}", "${esc(d.tag)}", [${content(d.text)} #srcLink("${esc(d.source?.name || 'src')}")])`).join('\n')}
 
-#pagebreak()
+#v(6mm)
 
-// ==================== PAGE 3: MARKET ====================
 #sectionHead("02", "市场脉搏", "Market Pulse")
 
 #block(
   fill: rgb("#f5f5f3"),
   stroke: (left: 2pt + rgb("#141414")),
-  inset: (x: 5mm, y: 4mm),
-  below: 5mm,
+  inset: (x: 5mm, y: 3mm),
+  below: 4mm,
   width: 100%,
 )[
   #grid(
@@ -332,7 +331,7 @@ ${digest.map((d, i) => `#digestItem("${String(i+1).padStart(2,'0')}", "${esc(d.t
     align: (left + horizon, right + horizon),
     text(size: 9pt, fill: rgb("#666"))[*SOX* 费城半导体指数],
     [
-      #text(size: 16pt, weight: "medium", fill: rgb("#141414"), font: "Menlo")[${market.sox.value}] \\
+      #text(size: 14pt, weight: "medium", fill: rgb("#141414"), font: "Menlo")[${market.sox.value}] \\
       #text(size: 6.5pt, fill: rgb("#999"), font: "Menlo")[52W High: ${market.sox.high52w} · ${market.sox.offPeak} off peak]
     ]
   )
@@ -347,10 +346,10 @@ ${market.stocks.map(s => `  stockCard("${esc(s.ticker)}", "${esc(s.name)}", "${e
 
 #pagebreak()
 
-// ==================== PAGE 4: EQUIPMENT PART 1 ====================
-#sectionHead("03", "设备巨头动态", "Equipment Giants — Part 1")
+// ==================== PAGE 3: EQUIPMENT GIANTS (all 4 on one page) ====================
+#sectionHead("03", "设备巨头动态", "Equipment Giants")
 
-${equipment.slice(0, 2).map(co => `
+${equipment.map(co => `
 #companyBlock(
   "${esc(co.name)}",
   "${esc(co.ticker)}",
@@ -362,29 +361,14 @@ ${co.events.map(([d, t]) => `    ("${esc(d)}", [${content(t)}]),`).join('\n')}
 
 #pagebreak()
 
-// ==================== PAGE 5: EQUIPMENT PART 2 ====================
-#sectionHead("03", "设备巨头动态", "Equipment Giants — Part 2")
-
-${equipment.slice(2).map(co => `
-#companyBlock(
-  "${esc(co.name)}",
-  "${esc(co.ticker)}",
-  (
-${co.events.map(([d, t]) => `    ("${esc(d)}", [${content(t)}]),`).join('\n')}
-  ),
-  highlight: ${co.highlight ? `[${content(co.highlight)}]` : 'none'}
-)`).join('\n')}
-
-#pagebreak()
-
-// ==================== PAGE 6: TECH FRONTIER ====================
+// ==================== PAGE 4: TECH FRONTIER ====================
 #sectionHead("04", "前沿技术", "Tech Frontier")
 
 ${techFrontier.map(t => `#item([${content(t.title)}], [${content(t.text)}])`).join('\n')}
 
 #pagebreak()
 
-// ==================== PAGE 7: CHINA ====================
+// ==================== PAGE 5: CHINA ====================
 #sectionHead("05", "中国半导体动态", "China Semiconductor")
 
 ${chinaSection.companies.map(co => `

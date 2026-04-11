@@ -221,7 +221,7 @@
 
 #pagebreak()
 
-// ==================== PAGE 2: DIGEST ====================
+// ==================== PAGE 2: DIGEST + MARKET (merged) ====================
 #sectionHead("01", "本周速览", "Weekly Digest")
 
 #digestItem("01", "POLICY", [美国众议院推出 MATCH Act，拟封堵 ASML DUV 对华出口通道，ASML 单日跌 4.7% #srcLink("src")])
@@ -230,16 +230,15 @@
 #digestItem("04", "CHINA", [北方华创、中微公司在 SEMICON China 2026 密集发布新品，北方华创 2026 年订单目标 600 亿 #srcLink("src")])
 #digestItem("05", "HIGH-NA", [Imec 接收 ASML EXE:5200 High-NA EUV 系统，预计 Q4 完成验证 #srcLink("src")])
 
-#pagebreak()
+#v(6mm)
 
-// ==================== PAGE 3: MARKET ====================
 #sectionHead("02", "市场脉搏", "Market Pulse")
 
 #block(
   fill: rgb("#f5f5f3"),
   stroke: (left: 2pt + rgb("#141414")),
-  inset: (x: 5mm, y: 4mm),
-  below: 5mm,
+  inset: (x: 5mm, y: 3mm),
+  below: 4mm,
   width: 100%,
 )[
   #grid(
@@ -247,7 +246,7 @@
     align: (left + horizon, right + horizon),
     text(size: 9pt, fill: rgb("#666"))[*SOX* 费城半导体指数],
     [
-      #text(size: 16pt, weight: "medium", fill: rgb("#141414"), font: "Menlo")[7,877] \
+      #text(size: 14pt, weight: "medium", fill: rgb("#141414"), font: "Menlo")[7,877] \
       #text(size: 6.5pt, fill: rgb("#999"), font: "Menlo")[52W High: 8,498 · -7.3% off peak]
     ]
   )
@@ -265,8 +264,8 @@
 
 #pagebreak()
 
-// ==================== PAGE 4: EQUIPMENT PART 1 ====================
-#sectionHead("03", "设备巨头动态", "Equipment Giants — Part 1")
+// ==================== PAGE 3: EQUIPMENT GIANTS (all 4 on one page) ====================
+#sectionHead("03", "设备巨头动态", "Equipment Giants")
 
 
 #companyBlock(
@@ -289,12 +288,6 @@
   ),
   highlight: [连续四个季度超预期，Q2 FY2026 营收 \$53.4 亿（同比 +22%），Q3 指引 \$57 亿显示持续加速。]
 )
-
-#pagebreak()
-
-// ==================== PAGE 5: EQUIPMENT PART 2 ====================
-#sectionHead("03", "设备巨头动态", "Equipment Giants — Part 2")
-
 
 #companyBlock(
   "ASML Holding",
@@ -319,7 +312,7 @@
 
 #pagebreak()
 
-// ==================== PAGE 6: TECH FRONTIER ====================
+// ==================== PAGE 4: TECH FRONTIER ====================
 #sectionHead("04", "前沿技术", "Tech Frontier")
 
 #item([GAA 与背面供电进入量产倒计时], [TSMC N2P（2nm + 背面供电）计划 2026 下半年投产；A16（1.6nm + Super Power Rail）紧随其后。背面供电可降低电压降和供电噪声，但与 GAA 集成带来应力管理挑战。])
@@ -328,7 +321,7 @@
 
 #pagebreak()
 
-// ==================== PAGE 7: CHINA ====================
+// ==================== PAGE 5: CHINA ====================
 #sectionHead("05", "中国半导体动态", "China Semiconductor")
 
 
