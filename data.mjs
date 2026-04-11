@@ -176,6 +176,17 @@ export const academic = [
   },
 ];
 
+// aiSmart has an `outro` highlight box. Keep section + outro together
+// so both web and PDF generators can read them consistently.
+export const aiSmartOutro = {
+  label: 'Capital Flow',
+  text: '四大超算巨头 2026 年 AI 基础设施资本支出计划达 $6,500 亿，同比增 71%。Intel 加入 Musk 的 Terafab 项目（$250 亿），贡献 18A 工艺。',
+  sources: [
+    { name: 'Deloitte', url: 'https://www.deloitte.com/us/en/insights/industry/technology/technology-media-telecom-outlooks/semiconductor-industry-outlook.html' },
+    { name: 'TNW', url: 'https://thenextweb.com/news/intel-terafab-elon-musk-foundry-partnership' },
+  ],
+};
+
 export const aiSmart = [
   {
     title: 'Intel 将 AI 嵌入晶圆厂核心流程',
@@ -212,6 +223,15 @@ export const aiSmart = [
   },
 ];
 
+// designTrends has an `outro` highlight box titled "UX Shift"
+export const designTrendsOutro = {
+  label: 'UX Shift',
+  text: 'NVIDIA 宣布与 TSMC、SK 海力士、三星、联发科等工业软件巨头合作，将 Agentic AI 嵌入设计、工程和制造软件。原本依赖人工操作的复杂工作流，正被长时间运行的 AI Agent 接管——半导体制造 UX 迎来新的交互底层。',
+  sources: [
+    { name: 'NVIDIA IR', url: 'https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Global-Industrial-Software-Giants-Bring-Design-Engineering-and-Manufacturing-Into-the-AI-Era/default.aspx' },
+  ],
+};
+
 export const designTrends = [
   {
     title: 'Cadence ChipStack AI Super Agent：EDA 从菜单交互走向意图对话',
@@ -242,13 +262,6 @@ export const designTrends = [
     text: 'Intel 在 CES 2026 发布首款 Intel 18A 量产消费平台 Core Ultra Series 3，把"美国制造"作为工业设计语言的核心叙事，将芯片封装与品牌视觉绑定到 CEO 林本坚领导下的 Intel Foundry 复兴故事。',
     sources: [
       { name: 'Intel', url: 'https://www.intc.com/news-events/press-releases/detail/1757/ces-2026-intel-core-ultra-series-3-debuts-as-first-built' },
-    ],
-  },
-  {
-    title: 'Agentic UX 进入半导体制造：工程师工作流的新底层',
-    text: 'NVIDIA 宣布与 TSMC、SK 海力士、三星、联发科等全球工业软件巨头合作，将 Agentic AI 嵌入设计、工程和制造软件。原本依赖人工操作的复杂工作流，正被长时间运行的 AI Agent 接管，半导体制造 UX 迎来新的交互底层。',
-    sources: [
-      { name: 'NVIDIA IR', url: 'https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-Global-Industrial-Software-Giants-Bring-Design-Engineering-and-Manufacturing-Into-the-AI-Era/default.aspx' },
     ],
   },
 ];
