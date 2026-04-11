@@ -87,6 +87,20 @@ function content(s) {
 // Legacy alias
 const strip = content;
 
+// Render a list of sources as inline Typst code: clickable #link calls
+// separated by small spaces. Output is meant to be appended after content.
+function sourcesInline(sources) {
+  if (!sources || sources.length === 0) return '';
+  const links = sources.map(s => {
+    // URL in Typst string needs backslash escaping
+    const safeUrl = esc(s.url);
+    // Name is content-mode, escape special chars
+    const safeName = content(s.name);
+    return `#link("${safeUrl}")[#text(size: 6.5pt, fill: rgb("#999"), font: "Menlo")[${safeName}]]`;
+  });
+  return ' ' + links.join('  ');
+}
+
 // Typst source with inline template
 const typst = `
 // ================================================================
@@ -148,10 +162,27 @@ const typst = `
   ]
 ]
 
-#let srcLink(name) = {
-  box[
-    #text(size: 6.5pt, fill: rgb("#999"), font: "Menlo")[#name]
-  ]
+#let srcLink(name, url: none) = {
+  if url != none {
+    box[
+      #link(url)[
+        #text(size: 6.5pt, fill: rgb("#999"), font: "Menlo")[#name]
+      ]
+    ]
+  } else {
+    box[
+      #text(size: 6.5pt, fill: rgb("#999"), font: "Menlo")[#name]
+    ]
+  }
+}
+
+// Render a list of sources as a row of clickable links
+#let srcList(sources) = {
+  if sources == none or sources.len() == 0 {
+    []
+  } else {
+    sources.map(s => srcLink(s.name, url: s.url)).join("  ")
+  }
 }
 
 #let tag(label, bg: "#f5f5f3", color: "#666666") = {
@@ -313,7 +344,7 @@ const typst = `
 // ==================== PAGE 2: DIGEST + MARKET (merged) ====================
 #sectionHead("01", "本周速览", "Weekly Digest")
 
-${digest.map((d, i) => `#digestItem("${String(i+1).padStart(2,'0')}", "${esc(d.tag)}", [${content(d.text)} #srcLink("${esc(d.source?.name || 'src')}")])`).join('\n')}
+${digest.map((d, i) => `#digestItem("${String(i+1).padStart(2,'0')}", "${esc(d.tag)}", [${content(d.text)}${sourcesInline(d.sources)}])`).join('\n')}
 
 #v(6mm)
 
@@ -354,17 +385,10 @@ ${equipment.map(co => `
   "${esc(co.name)}",
   "${esc(co.ticker)}",
   (
-${co.events.map(([d, t]) => `    ("${esc(d)}", [${content(t)}]),`).join('\n')}
+${co.events.map(([d, t, srcs]) => `    ("${esc(d)}", [${content(t)}${sourcesInline(srcs)}]),`).join('\n')}
   ),
-  highlight: ${co.highlight ? `[${content(co.highlight)}]` : 'none'}
+  highlight: ${co.highlight ? `[${content(co.highlight)}${sourcesInline(co.highlightSources)}]` : 'none'}
 )`).join('\n')}
-
-#pagebreak()
-
-// ==================== PAGE 4: TECH FRONTIER ====================
-#sectionHead("04", "前沿技术", "Tech Frontier")
-
-${techFrontier.map(t => `#item([${content(t.title)}], [${content(t.text)}])`).join('\n')}
 
 #pagebreak()
 
@@ -376,33 +400,39 @@ ${chinaSection.companies.map(co => `
   "${esc(co.name)}",
   "${esc(co.ticker)}",
   (
-${co.events.map(([d, t]) => `    ("${esc(d)}", [${content(t)}]),`).join('\n')}
+${co.events.map(([d, t, srcs]) => `    ("${esc(d)}", [${content(t)}${sourcesInline(srcs)}]),`).join('\n')}
   ),
-  highlight: ${co.highlight ? `[${content(co.highlight)}]` : 'none'}
+  highlight: ${co.highlight ? `[${content(co.highlight)}${sourcesInline(co.highlightSources)}]` : 'none'}
 )`).join('\n')}
 
-#hlBox("Policy & Outlook", [${strip(chinaSection.outlook)}])
+#hlBox("Policy & Outlook", [${content(chinaSection.outlook)}${sourcesInline(chinaSection.outlookSources)}])
 
 #pagebreak()
 
-// ==================== PAGE 8: ACADEMIC ====================
-#sectionHead("06", "学术与研究前沿", "Academic & Research")
+// ==================== PAGE: TECH FRONTIER + ACADEMIC (merged) ====================
+#sectionHead("04", "前沿技术", "Tech Frontier")
 
-${academic.map(a => `#item([${content(a.title)}], [${content(a.text)}])`).join('\n')}
+${techFrontier.map(t => `#item([${content(t.title)}], [${content(t.text)}${sourcesInline(t.sources)}])`).join('\n')}
+
+#v(6mm)
+
+#sectionHead("06", "学术研究", "Academic Research")
+
+${academic.map(a => `#item([${content(a.title)}], [${content(a.text)}${sourcesInline(a.sources)}])`).join('\n')}
 
 #pagebreak()
 
 // ==================== PAGE 9: AI & SMART ====================
 #sectionHead("07", "AI 与智能化", "AI & Smart Manufacturing")
 
-${aiSmart.map(a => `#item([${content(a.title)}], [${content(a.text)}])`).join('\n')}
+${aiSmart.map(a => `#item([${content(a.title)}], [${content(a.text)}${sourcesInline(a.sources)}])`).join('\n')}
 
 #pagebreak()
 
 // ==================== PAGE 10: DESIGN TRENDS ====================
 #sectionHead("08", "产品与体验设计", "Product & Experience Design")
 
-${designTrends.map(d => `#item([${content(d.title)}], [${content(d.text)}])`).join('\n')}
+${designTrends.map(d => `#item([${content(d.title)}], [${content(d.text)}${sourcesInline(d.sources)}])`).join('\n')}
 
 #pagebreak()
 
@@ -417,7 +447,7 @@ ${policy.map(p => `
   #v(2mm)
   #text(size: 10pt, weight: "bold", fill: rgb("#1a1a1a"))[${content(p.title)}]
   #v(1.5mm)
-  #text(size: 9pt, fill: rgb("#333"))[${content(p.text)}]
+  #text(size: 9pt, fill: rgb("#333"))[${content(p.text)}${sourcesInline(p.sources)}]
 ]`).join('\n')}
 
 #v(6mm)
@@ -429,7 +459,7 @@ ${policy.map(p => `
 #text(size: 7pt, fill: rgb("#999"), font: "Menlo")[INDUSTRY LANDSCAPE]
 #v(4mm)
 
-#hlBox("Fab Expansion", [${strip(landscape)}])
+#hlBox("Fab Expansion", [${content(landscape.text)}${sourcesInline(landscape.sources)}])
 
 #pagebreak()
 
@@ -443,7 +473,7 @@ ${reading.slice(0, 3).map((r, i) => `
     align: (left + top, left + top),
     text(size: 14pt, fill: rgb("#e0e0e0"), font: "Menlo")[${String(i+1).padStart(2,'0')}],
     [
-      #text(size: 9pt, weight: "semibold", fill: rgb("#1a1a1a"))[${content(r.title)}] \\
+      ${r.url ? `#link("${esc(r.url)}")[#text(size: 9pt, weight: "semibold", fill: rgb("#1a1a1a"))[${content(r.title)}]]` : `#text(size: 9pt, weight: "semibold", fill: rgb("#1a1a1a"))[${content(r.title)}]`} \\
       #v(1mm)
       #text(size: 6.5pt, fill: rgb("#999"), font: "Menlo")[${content(r.source)}] \\
       #v(1mm)
