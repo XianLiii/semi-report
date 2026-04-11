@@ -131,7 +131,11 @@ const typ = `
   lang: "zh",
   fill: rgb("#333"),
 )
-#set par(justify: false, leading: 0.72em)
+// line-height ≈ 1.8 (matches web version)
+// Typst "leading" = extra space between lines (line-height - 1em)
+// 0.8em applied globally so every paragraph inherits it, including
+// nested content blocks inside helper functions.
+#set par(justify: false, leading: 0.8em, spacing: 1.2em)
 
 // ---------- Helpers ----------
 
