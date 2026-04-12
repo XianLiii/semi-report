@@ -38,6 +38,9 @@ const baseCss = cssMatch ? cssMatch[1] : '';
 
 // Additional V2 CSS
 const v2Css = `
+  .digest-body {
+    flex: 1; min-width: 0;
+  }
   .why-block {
     margin-top: 8px; padding: 8px 14px;
     background: #fef9f0; border-left: 2px solid #d4a017;
@@ -163,7 +166,15 @@ html += `<div class="section" id="digest">
   <div class="section-head"><span class="section-num">01</span><h2 class="section-title">本周速览</h2><div class="section-sub">Weekly Digest</div></div>
   <ul class="digest">`;
 digest.forEach((d, i) => {
-  html += `<li><span class="digest-num">${String(i+1).padStart(2,'0')}</span><span class="digest-tag">${esc(d.tag)}</span><span class="digest-text">${clean(d.text)}</span>${srcLinks(d.sources)}${whyBlock(d.why)}</li>`;
+  html += `<li>
+    <span class="digest-num">${String(i+1).padStart(2,'0')}</span>
+    <span class="digest-tag">${esc(d.tag)}</span>
+    <div class="digest-body">
+      <span class="digest-text">${clean(d.text)}</span>
+      ${srcLinks(d.sources)}
+      ${whyBlock(d.why)}
+    </div>
+  </li>`;
 });
 html += `</ul></div>`;
 

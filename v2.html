@@ -449,6 +449,9 @@
   }
 
 
+  .digest-body {
+    flex: 1; min-width: 0;
+  }
   .why-block {
     margin-top: 8px; padding: 8px 14px;
     background: #fef9f0; border-left: 2px solid #d4a017;
@@ -558,7 +561,55 @@
 <div class="content">
 <div class="section" id="digest">
   <div class="section-head"><span class="section-num">01</span><h2 class="section-title">本周速览</h2><div class="section-sub">Weekly Digest</div></div>
-  <ul class="digest"><li><span class="digest-num">01</span><span class="digest-tag">POLICY</span><span class="digest-text">美国众议院推出 MATCH Act，拟封堵 ASML DUV 对华出口通道，ASML 单日跌 4.7%</span><div class="item-sources"><a href="https://www.bloomberg.com/news/articles/2026-04-02/us-lawmakers-propose-crackdown-on-sales-of-chip-tools-to-china" target="_blank">Bloomberg</a></div><div class="why-block"><span class="why-label">Why It Matters</span>直接影响中国 Fab 的 DUV 光刻机获取路径，可能加速国产替代节奏</div></li><li><span class="digest-num">02</span><span class="digest-tag">AMAT</span><span class="digest-text">Applied Materials 发布 Precision Selective Nitride PECVD 和 Trillium ALD 两款沉积系统，面向 GAA 2nm</span><div class="item-sources"><a href="https://www.stocktitan.net/news/AMAT/applied-materials-introduces-deposition-systems-for-angstrom-era-7v0938tplllx.html" target="_blank">StockTitan</a></div><div class="why-block"><span class="why-label">Why It Matters</span>STI 选择性沉积和亚纳米膜厚控制是 GAA 量产的两大工艺瓶颈，这两款工具直接解决</div></li><li><span class="digest-num">03</span><span class="digest-tag">LAM</span><span class="digest-text">Lam Research 发布 Akara 导体刻蚀系统和 ALTUS Halo 钼 ALD，均已被领先厂商选为量产机台</span><div class="item-sources"><a href="https://newsroom.lamresearch.com/everything-about-akara" target="_blank">Lam Newsroom</a></div><div class="why-block"><span class="why-label">Why It Matters</span>Akara 的 DirectDrive 固态等离子体源是刻蚀领域 20 年来最大架构变革；钼替代钨是金属化路线的范式转移</div></li><li><span class="digest-num">04</span><span class="digest-tag">TEL</span><span class="digest-text">TEL LITHIUS Pro DICE 开始在纽约 Albany NanoTech 安装，北美首个公共 High-NA EUV 中心成型</span><div class="item-sources"><a href="https://www.governor.ny.gov/news/governor-hochul-announces-ny-creates-begins-installation-first-major-tool-high-na-euv" target="_blank">Governor NY</a></div><div class="why-block"><span class="why-label">Why It Matters</span>美国本土 High-NA EUV 生态落地的关键一步，配套 ASML EXE:5200 将在年底前 first light</div></li><li><span class="digest-num">05</span><span class="digest-tag">SEMI</span><span class="digest-text">SEMI 发布数据：2025 全球半导体设备销售 $1,351 亿，预计 2027 年达 $1,560 亿创新高</span><div class="item-sources"><a href="https://www.semi.org/en/semi-press-release/semi-projects-double-digit-growth-in-global-300mm-fab-equipment-spending-for-2026-and-2027" target="_blank">SEMI</a></div><div class="why-block"><span class="why-label">Why It Matters</span>AI 驱动的先进逻辑和存储投资是主要增长引擎，台湾 2025 设备支出暴涨 90%</div></li><li><span class="digest-num">06</span><span class="digest-tag">HIGH-NA</span><span class="digest-text">Imec 接收 ASML EXE:5200 High-NA EUV 系统，全球不到 12 台，预计 Q4 完成验证</span><div class="item-sources"><a href="https://www.imec-int.com/en/press/imec-receives-worlds-most-advanced-high-na-euv-system" target="_blank">Imec</a></div><div class="why-block"><span class="why-label">Why It Matters</span>Imec 是全球 sub-2nm 工艺的核心研发枢纽，验证结果将直接影响 TSMC/Intel/Samsung 的量产节奏</div></li></ul></div><div class="section" id="market">
+  <ul class="digest"><li>
+    <span class="digest-num">01</span>
+    <span class="digest-tag">POLICY</span>
+    <div class="digest-body">
+      <span class="digest-text">美国众议院推出 MATCH Act，拟封堵 ASML DUV 对华出口通道，ASML 单日跌 4.7%</span>
+      <div class="item-sources"><a href="https://www.bloomberg.com/news/articles/2026-04-02/us-lawmakers-propose-crackdown-on-sales-of-chip-tools-to-china" target="_blank">Bloomberg</a></div>
+      <div class="why-block"><span class="why-label">Why It Matters</span>直接影响中国 Fab 的 DUV 光刻机获取路径，可能加速国产替代节奏</div>
+    </div>
+  </li><li>
+    <span class="digest-num">02</span>
+    <span class="digest-tag">AMAT</span>
+    <div class="digest-body">
+      <span class="digest-text">Applied Materials 发布 Precision Selective Nitride PECVD 和 Trillium ALD 两款沉积系统，面向 GAA 2nm</span>
+      <div class="item-sources"><a href="https://www.stocktitan.net/news/AMAT/applied-materials-introduces-deposition-systems-for-angstrom-era-7v0938tplllx.html" target="_blank">StockTitan</a></div>
+      <div class="why-block"><span class="why-label">Why It Matters</span>STI 选择性沉积和亚纳米膜厚控制是 GAA 量产的两大工艺瓶颈，这两款工具直接解决</div>
+    </div>
+  </li><li>
+    <span class="digest-num">03</span>
+    <span class="digest-tag">LAM</span>
+    <div class="digest-body">
+      <span class="digest-text">Lam Research 发布 Akara 导体刻蚀系统和 ALTUS Halo 钼 ALD，均已被领先厂商选为量产机台</span>
+      <div class="item-sources"><a href="https://newsroom.lamresearch.com/everything-about-akara" target="_blank">Lam Newsroom</a></div>
+      <div class="why-block"><span class="why-label">Why It Matters</span>Akara 的 DirectDrive 固态等离子体源是刻蚀领域 20 年来最大架构变革；钼替代钨是金属化路线的范式转移</div>
+    </div>
+  </li><li>
+    <span class="digest-num">04</span>
+    <span class="digest-tag">TEL</span>
+    <div class="digest-body">
+      <span class="digest-text">TEL LITHIUS Pro DICE 开始在纽约 Albany NanoTech 安装，北美首个公共 High-NA EUV 中心成型</span>
+      <div class="item-sources"><a href="https://www.governor.ny.gov/news/governor-hochul-announces-ny-creates-begins-installation-first-major-tool-high-na-euv" target="_blank">Governor NY</a></div>
+      <div class="why-block"><span class="why-label">Why It Matters</span>美国本土 High-NA EUV 生态落地的关键一步，配套 ASML EXE:5200 将在年底前 first light</div>
+    </div>
+  </li><li>
+    <span class="digest-num">05</span>
+    <span class="digest-tag">SEMI</span>
+    <div class="digest-body">
+      <span class="digest-text">SEMI 发布数据：2025 全球半导体设备销售 $1,351 亿，预计 2027 年达 $1,560 亿创新高</span>
+      <div class="item-sources"><a href="https://www.semi.org/en/semi-press-release/semi-projects-double-digit-growth-in-global-300mm-fab-equipment-spending-for-2026-and-2027" target="_blank">SEMI</a></div>
+      <div class="why-block"><span class="why-label">Why It Matters</span>AI 驱动的先进逻辑和存储投资是主要增长引擎，台湾 2025 设备支出暴涨 90%</div>
+    </div>
+  </li><li>
+    <span class="digest-num">06</span>
+    <span class="digest-tag">HIGH-NA</span>
+    <div class="digest-body">
+      <span class="digest-text">Imec 接收 ASML EXE:5200 High-NA EUV 系统，全球不到 12 台，预计 Q4 完成验证</span>
+      <div class="item-sources"><a href="https://www.imec-int.com/en/press/imec-receives-worlds-most-advanced-high-na-euv-system" target="_blank">Imec</a></div>
+      <div class="why-block"><span class="why-label">Why It Matters</span>Imec 是全球 sub-2nm 工艺的核心研发枢纽，验证结果将直接影响 TSMC/Intel/Samsung 的量产节奏</div>
+    </div>
+  </li></ul></div><div class="section" id="market">
   <div class="section-head"><span class="section-num">02</span><h2 class="section-title">市场脉搏</h2><div class="section-sub">Market Pulse</div></div>
   <div class="sox-bar"><div><span class="sox-label"><strong>SOX</strong> 费城半导体指数</span></div><div style="text-align:right"><div class="sox-value">7,877</div><div class="sox-sub">52W High: 8,498 · -7.3% off peak</div></div></div>
   <div class="stock-grid"><div class="stock-card"><div class="stock-ticker">AMAT</div><div class="stock-name">Applied Materials</div><div class="stock-price">$352.62</div><div class="stock-change up">&#9650; +8.0% (Apr 8)</div><div class="stock-note">GAA 新品发布提振</div></div><div class="stock-card"><div class="stock-ticker">LRCX</div><div class="stock-name">Lam Research</div><div class="stock-price">$235.00</div><div class="stock-change up">&#9650; +9.5% (Apr 8)</div><div class="stock-note">YTD +37.6%，Akara 订单强劲</div></div><div class="stock-card"><div class="stock-ticker">ASML</div><div class="stock-name">ASML Holding</div><div class="stock-price">$1,317</div><div class="stock-change down">&#9660; -4.7% (Apr 7)</div><div class="stock-note">MATCH Act 冲击，中国营收占 29%</div></div><div class="stock-card"><div class="stock-ticker">KLAC</div><div class="stock-name">KLA Corporation</div><div class="stock-price">$1,661</div><div class="stock-change up">&#9650; +7.4% (Apr 8)</div><div class="stock-note">YTD +30.3%，$70 亿回购计划</div></div><div class="stock-card"><div class="stock-ticker">8035.T</div><div class="stock-name">Tokyo Electron</div><div class="stock-price">¥24,800</div><div class="stock-change up">&#9650; +3.2% (Apr 8)</div><div class="stock-note">DICE 安装 Albany，资本支出创新高</div></div></div></div><div class="section" id="equipment">
