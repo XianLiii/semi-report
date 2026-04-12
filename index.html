@@ -49,6 +49,38 @@
   .nav-brand {
     font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
     text-transform: uppercase; color: var(--dark);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .version-dropdown {
+    position: relative; margin-left: 4px;
+  }
+  .version-btn {
+    font-family: var(--mono); font-size: 0.58rem; font-weight: 500;
+    padding: 2px 7px; color: var(--tertiary); background: none;
+    border: 1px solid var(--border); border-radius: 4px;
+    cursor: pointer; transition: all 0.12s; letter-spacing: 0;
+    text-transform: none; display: inline-flex; align-items: center; gap: 3px;
+  }
+  .version-btn:hover { border-color: var(--dark); color: var(--dark); }
+  .version-btn svg { width: 8px; height: 8px; opacity: 0.5; }
+  .version-menu {
+    display: none; position: absolute; top: calc(100% + 4px); left: 0;
+    background: var(--white); border: 1px solid var(--border); border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08); min-width: 90px; z-index: 200;
+    overflow: hidden;
+  }
+  .version-menu.open { display: block; }
+  .version-menu a {
+    display: block; padding: 7px 12px; font-family: var(--mono);
+    font-size: 0.62rem; color: var(--body); text-decoration: none;
+    transition: background 0.1s; text-transform: none; letter-spacing: 0;
+  }
+  .version-menu a:hover { background: var(--tag-bg); }
+  .version-menu a.current {
+    color: var(--tertiary); pointer-events: none;
+  }
+  .version-menu a.current::after {
+    content: " ·"; color: var(--red);
   }
   .nav-right { display: flex; gap: 8px; align-items: center; }
   .nav-date { font-family: var(--mono); font-size: 0.7rem; color: var(--tertiary); margin-right: 16px; }
@@ -254,7 +286,8 @@
     /* ===== NAV ===== */
     .nav { padding: 0 16px; }
     .nav-inner { height: 52px; }
-    .nav-brand { font-size: 0.68rem; letter-spacing: 0.1em; }
+    .nav-brand { font-size: 0.68rem; letter-spacing: 0.1em; gap: 5px; }
+    .version-btn { font-size: 0.52rem; padding: 2px 5px; }
     .nav-date { display: none; }
     .nav-right .btn-download { display: none; }
     .mobile-menu-btn {
@@ -420,7 +453,19 @@
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <div class="nav-brand">Semiconductor Weekly</div>
+    <div class="nav-brand">
+      Semiconductor Weekly
+      <span class="version-dropdown" id="versionDropdown">
+        <button class="version-btn" onclick="document.getElementById('versionDropdown').querySelector('.version-menu').classList.toggle('open')">
+          V2
+          <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+        </button>
+        <div class="version-menu">
+          <a href="#" class="current">V2 Latest</a>
+          <a href="v1.html">V1</a>
+        </div>
+      </span>
+    </div>
     <div class="nav-right">
       <span class="nav-date">2026.04.07 — 04.09</span>
       <a class="btn-download" href="report-2026-W15.pdf" download>
@@ -666,5 +711,14 @@
 
 </div><!-- end .content-zone -->
 
+<script>
+// Close version dropdown when clicking outside
+document.addEventListener('click', (e) => {
+  const dd = document.getElementById('versionDropdown');
+  if (dd && !dd.contains(e.target)) {
+    dd.querySelector('.version-menu').classList.remove('open');
+  }
+});
+</script>
 </body>
 </html>
