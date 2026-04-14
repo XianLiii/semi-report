@@ -144,7 +144,7 @@ ${v2Css}
 <div class="cover-zone">
 <div class="hero">
   <div class="hero-label">Weekly Briefing · V2</div>
-  <h1>${esc(meta.title)}</h1>
+  <h1>${esc(meta.title).replace('，', '，<br>')}</h1>
   <div class="hero-subtitle">${esc(meta.subtitle)}</div>
   <div class="hero-meta">
     <span class="hero-meta-item">${esc(meta.vol)}</span>
@@ -164,9 +164,9 @@ ${v2Css}
     <a class="toc-item" href="#ai"><span class="toc-num">07</span><span class="toc-label">AI 与智能化</span></a>
     <a class="toc-item" href="#design"><span class="toc-num">08</span><span class="toc-label">产品与体验设计</span></a>
     <a class="toc-item" href="#policy"><span class="toc-num">09</span><span class="toc-label">政策与地缘</span></a>
-    <a class="toc-item" href="#reading"><span class="toc-num">11</span><span class="toc-label">值得一读</span></a>
-    <a class="toc-item" href="#calendar"><span class="toc-num">12</span><span class="toc-label">关键日程</span></a>
-    <a class="toc-item" href="#synthesis"><span class="toc-num">13</span><span class="toc-label">综合判断</span></a>
+    <a class="toc-item" href="#reading"><span class="toc-num">10</span><span class="toc-label">值得一读</span></a>
+    <a class="toc-item" href="#calendar"><span class="toc-num">11</span><span class="toc-label">关键日程</span></a>
+    <a class="toc-item" href="#synthesis"><span class="toc-num">12</span><span class="toc-label">综合判断</span></a>
   </div>
 </div>
 </div>
@@ -280,7 +280,7 @@ html += `<div class="hl-box"><div class="label">Fab Expansion</div><p>${clean(la
 
 // ---- 11 READING ----
 html += `<div class="section" id="reading">
-  <div class="section-head"><span class="section-num">11</span><h2 class="section-title">值得一读</h2><div class="section-sub">Worth Reading</div></div>`;
+  <div class="section-head"><span class="section-num">10</span><h2 class="section-title">值得一读</h2><div class="section-sub">Worth Reading</div></div>`;
 reading.forEach((r, i) => {
   html += `<div class="reading"><span class="reading-num">${String(i+1).padStart(2,'0')}</span><div><a class="reading-title" href="${esc(r.url)}" target="_blank">${esc(r.title)}</a><div class="reading-source">${esc(r.source)}</div><div class="reading-desc">${esc(r.desc)}</div></div></div>`;
 });
@@ -288,7 +288,7 @@ html += `</div>`;
 
 // ---- 12 CALENDAR ----
 html += `<div class="section" id="calendar">
-  <div class="section-head"><span class="section-num">12</span><h2 class="section-title">关键日程</h2><div class="section-sub">Upcoming Events</div></div>
+  <div class="section-head"><span class="section-num">11</span><h2 class="section-title">关键日程</h2><div class="section-sub">Upcoming Events</div></div>
   <div class="cal-grid">`;
 calendar.forEach(c => {
   html += `<div class="cal-date">${esc(c.date)}</div><div class="cal-event">${clean(c.event)}</div>`;
@@ -297,7 +297,7 @@ html += `</div></div>`;
 
 // ---- 13 SYNTHESIS ----
 html += `<div class="section" id="synthesis">
-  <div class="section-head"><span class="section-num">13</span><h2 class="section-title">综合判断</h2><div class="section-sub">Synthesis</div></div>`;
+  <div class="section-head"><span class="section-num">12</span><h2 class="section-title">综合判断</h2><div class="section-sub">Synthesis</div></div>`;
 synthesis.techLines.forEach(l => {
   html += `<div class="synthesis-card"><div class="synthesis-theme">${esc(l.theme)}</div><div class="synthesis-insight">${esc(l.insight)}</div></div>`;
 });
