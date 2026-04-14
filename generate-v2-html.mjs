@@ -59,14 +59,29 @@ const v2Css = `
   }
   .synthesis-theme { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
   .synthesis-insight { font-size: 0.88rem; color: var(--body); line-height: 1.8; }
-  .priority-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+  .priority-table { width: 100%; border-collapse: collapse; margin-top: 16px; table-layout: fixed; }
   .priority-table th, .priority-table td {
     padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--light); font-size: 0.85rem;
+    word-wrap: break-word;
   }
+  .priority-table th:nth-child(1), .priority-table td:nth-child(1) { width: 14%; white-space: nowrap; }
+  .priority-table th:nth-child(2), .priority-table td:nth-child(2) { width: 12%; white-space: nowrap; }
+  .priority-table th:nth-child(3), .priority-table td:nth-child(3) { width: 74%; }
   .priority-table th {
     font-family: var(--mono); font-size: 0.7rem; color: var(--tertiary); text-transform: uppercase;
   }
   .priority-stars { color: var(--red); font-size: 0.8rem; }
+  .stock-grid { display: flex !important; flex-direction: column !important; gap: 12px; }
+  .stock-row-top { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stock-row-bottom { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .stock-row-bottom .stock-card { min-width: 0; }
+  @media (max-width: 600px) {
+    .stock-row-top { grid-template-columns: 1fr 1fr; }
+    .stock-row-bottom { grid-template-columns: 1fr 1fr; }
+    .stock-card { padding: 10px 8px; }
+    .stock-card .stock-price { font-size: 1.1rem; }
+    .stock-card .stock-note { font-size: 0.65rem; }
+  }
 `;
 
 // ---- BUILD HTML ----
@@ -182,11 +197,16 @@ html += `</ul></div>`;
 html += `<div class="section" id="market">
   <div class="section-head"><span class="section-num">02</span><h2 class="section-title">市场脉搏</h2><div class="section-sub">Market Pulse</div></div>
   <div class="sox-bar"><div><span class="sox-label"><strong>SOX</strong> 费城半导体指数</span></div><div style="text-align:right"><div class="sox-value">${esc(market.sox.value)}</div><div class="sox-sub">52W High: ${esc(market.sox.high52w)} · ${esc(market.sox.offPeak)} off peak</div></div></div>
-  <div class="stock-grid">`;
-market.stocks.forEach(s => {
+  <div class="stock-grid">
+    <div class="stock-row-top">`;
+market.stocks.slice(0, 2).forEach(s => {
   html += `<div class="stock-card"><div class="stock-ticker">${esc(s.ticker)}</div><div class="stock-name">${esc(s.name)}</div><div class="stock-price">${esc(s.price)}</div><div class="stock-change ${s.up?'up':'down'}">${s.up?'&#9650;':'&#9660;'} ${esc(s.change)} (${esc(s.date)})</div><div class="stock-note">${esc(s.note)}</div></div>`;
 });
-html += `</div></div>`;
+html += `</div><div class="stock-row-bottom">`;
+market.stocks.slice(2).forEach(s => {
+  html += `<div class="stock-card"><div class="stock-ticker">${esc(s.ticker)}</div><div class="stock-name">${esc(s.name)}</div><div class="stock-price">${esc(s.price)}</div><div class="stock-change ${s.up?'up':'down'}">${s.up?'&#9650;':'&#9660;'} ${esc(s.change)} (${esc(s.date)})</div><div class="stock-note">${esc(s.note)}</div></div>`;
+});
+html += `</div></div></div>`;
 
 // ---- 03 EQUIPMENT ----
 html += `<div class="section" id="equipment">

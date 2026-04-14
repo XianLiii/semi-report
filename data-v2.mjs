@@ -215,6 +215,17 @@ export const chinaSection = {
       events: [['新品', 'Primo Angnova ICP 刻蚀、Primo Domingo 高选择性刻蚀、Smart RF Match、Preciomo Udx Micro LED MOCVD', [{ name: '快科技', url: 'https://news.mydrivers.com/1/1111/1111592.htm' }]]],
     },
     {
+      name: '新凯来', ticker: '未上市（估值近 1000 亿）',
+      highlight: 'SEMICON China 发布"名山系列"31 款设备覆盖全工艺链，在手订单超 100 亿元，被称为"中国版 ASML"。',
+      why: '新凯来脱胎于华为"星光工程部"，设备号称 100% 自主可控。其产品线覆盖外延（峨眉山系列 EPI）、ALD（阿里山系列）、PVD（普陀山系列）、刻蚀（武夷山系列）、CVD（长白山系列）及量检测，是国产设备全链条替代的标杆案例。',
+      highlightSources: [{ name: '东方财富', url: 'https://finance.eastmoney.com/a/202504053365505840.html' }],
+      events: [
+        ['新品', '"名山系列"31 款设备：覆盖扩散、薄膜沉积、刻蚀、量检测等核心工艺环节，13 类关键量检测产品已在头部晶圆厂量产应用', [{ name: '甲子光年', url: 'https://www.jazzyear.com/article_info.html?id=1598' }]],
+        ['光刻', '子公司宇量昇（上海国资+深圳国资）推进干式 DUV 光刻机研发，计划 2026 年量产，采用 SAQP 四次曝光逼近 5nm', [{ name: '新浪财经', url: 'https://finance.sina.com.cn/roll/2025-10-10/doc-inftmnma0975982.shtml' }]],
+        ['订单', '在手订单超 100 亿元，2026 年工业制造收入预计达 75 亿元，计划 2027 年净利润达 20 亿后启动 IPO', [{ name: '新浪财经', url: 'https://finance.sina.com.cn/jjxw/2025-09-05/doc-infpkxst7983491.shtml' }]],
+      ],
+    },
+    {
       name: '盛美半导体', ticker: '688082.SH', highlight: null,
       events: [['关注', 'MATCH Act 若通过，盛美的清洗和电镀设备将成为替代 TEL/Lam 的关键选项', []]],
     },
