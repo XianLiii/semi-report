@@ -224,8 +224,14 @@ export const chinaSection = {
       highlightSources: [{ name: '东方财富', url: 'https://finance.eastmoney.com/a/202504053365505840.html' }],
       events: [
         ['新品', '"名山系列"31 款设备：覆盖扩散、薄膜沉积、刻蚀、量检测等核心工艺环节，13 类关键量检测产品已在头部晶圆厂量产应用', [{ name: '甲子光年', url: 'https://www.jazzyear.com/article_info.html?id=1598' }]],
-        ['光刻', '子公司宇量昇（上海国资+深圳国资）推进干式 DUV 光刻机研发，计划 2026 年量产，采用 SAQP 四次曝光逼近 5nm', [{ name: '新浪财经', url: 'https://finance.sina.com.cn/roll/2025-10-10/doc-inftmnma0975982.shtml' }]],
-        ['订单', '在手订单超 100 亿元，2026 年工业制造收入预计达 75 亿元，计划 2027 年净利润达 20 亿后启动 IPO', [{ name: '新浪财经', url: 'https://finance.sina.com.cn/jjxw/2025-09-05/doc-infpkxst7983491.shtml' }]],
+        ['光刻', '子公司宇量昇（上海国资+深圳国资）推进干式 DUV 光刻机研发，计划 2026 年量产，采用 SAQP 四次曝光逼近 5nm', [
+          { name: '东方财富', url: 'https://caifuhao.eastmoney.com/news/20251016064315418315790' },
+          { name: '财经', url: 'https://www.mycaijing.com/article/detail/557488?source_id=40' },
+        ]],
+        ['订单', '在手订单超 100 亿元，2026 年工业制造收入预计达 75 亿元，计划 2027 年净利润达 20 亿后启动 IPO', [
+          { name: '腾讯新闻', url: 'https://news.qq.com/rain/a/20250905A05D3Z00' },
+          { name: '瑞财经', url: 'https://m.rccaijing.com/news-7369588516009473885.html' },
+        ]],
       ],
     },
     {
