@@ -103,7 +103,7 @@ export const equipment = [
       ['Akara', 'DirectDrive 固态等离子体源（100x 响应速度）+ TEMPO 脉冲 + SNAP 离子能量控制', [{ name: 'Semiconductor Digest', url: 'https://www.semiconductor-digest.com/lam-research-unveils-industrys-most-advanced-conductor-etch-technology-to-date/' }]],
       ['Halo', 'ALTUS Halo 钼 ALD：电阻比钨降低 50%+，正在三星/SK 产线认证', [{ name: 'Lam IR', url: 'https://investor.lamresearch.com/2025-02-19-Lam-Research-Ushers-in-New-Era-of-Semiconductor-Metallization-with-ALTUS-R-Halo-for-Molybdenum-Atomic-Layer-Deposition' }]],
       ['Aether', 'Aether 干法光刻胶被领先存储厂商采纳为 EUV 量产工具，与 JSR 交叉授权', [{ name: 'Lam IR', url: 'https://investor.lamresearch.com/2025-01-29-Breakthrough-EUV-Dry-Photoresist-Technology-from-Lam-Research-Adopted-by-Leading-Memory-Manufacturer' }]],
-      ['财报', 'Q2 FY2026 营收 $53.4 亿（同比 +22%），Q3 指引 $57 亿，连续四季超预期', [{ name: 'Zacks', url: 'https://www.zacks.com/commentary/2895120/bull-of-the-day-lam-research-lrcx' }]],
+      ['财报', 'Q2 FY2026 营收 $53.4 亿（同比 +22%），Q3 指引 $57 亿，连续四季超预期', [{ name: 'Lam IR', url: 'https://investor.lamresearch.com/image/LRCX_Exhibit_99.1_Q2_2026.pdf' }]],
     ],
   },
   {
@@ -115,7 +115,7 @@ export const equipment = [
     events: [
       ['High-NA', 'EXE:5200B 参数：NA 0.55，分辨率 8nm，单价 $3.5-4 亿，175 WPH，0.7nm overlay', [{ name: 'ASML', url: 'https://www.asml.com/en/products/euv-lithography-systems/twinscan-exe-5200b' }]],
       ['SK Hynix', '2025.09 SK Hynix 安装 EXE:5200B 于利川 M16 厂，DRAM 制造首次引入 High-NA EUV', [{ name: 'SK Hynix', url: 'https://news.skhynix.com/sk-hynix-introduces-industrys-first-commercial-high-na-euv/' }]],
-      ['订单', 'SK Hynix 承诺 $80 亿采购 ~30 台 EUV；Samsung 计划 $40 亿采购 ~20 台', [{ name: '24/7 Wall St', url: 'https://247wallst.com/investing/2026/04/06/asml-revenue-is-about-to-explode-higher-again/' }]],
+      ['订单', 'SK Hynix 承诺 $80 亿采购 EUV（至 2027，约 30 台）；Samsung 首批 High-NA EXE:5200B 2026H1 到货', [{ name: 'TrendForce', url: 'https://www.trendforce.com/news/2026/03/24/news-sk-hynix-commits-8b-to-asml-euv-equipment-by-2027-in-push-for-ai-memory-dominance/' }]],
       ['Apr 15', 'Q1 财报发布 | 指引：2026 净销售额 340-390 亿欧元', []],
     ],
   },
@@ -149,7 +149,7 @@ export const equipment = [
       ['Lumina', 'Lumina IC 基板检测系统：MMI 多模态成像 + AI 分类，覆盖玻璃芯基板', [{ name: 'KLA', url: 'https://www.prnewswire.com/news-releases/kla-unveils-comprehensive-ic-substrate-portfolio-for-a-new-era-of-advanced-semiconductor-packaging-302275682.html' }]],
       ['Kronos', 'Kronos 1190：150nm 灵敏度，DefectWise AI，覆盖 TSV/RDL/Cu pillar', [{ name: 'KLA IR', url: 'https://ir.kla.com/news-events/press-releases/detail/9/kla-announces-enhanced-portfolio-of-systems-for-advanced' }]],
       ['AXION', 'AXION T2000 X 射线量测：CD-SAXS 技术，测量 3D NAND 通道孔形状/倾斜/弯曲', [{ name: 'KLA', url: 'https://ir.kla.com/news-events/press-releases/detail/447/kla-launches-revolutionary-x-ray-metrology-system' }]],
-      ['资本', '宣布 $70 亿股票回购计划，连续第 17 年提高股息', [{ name: 'StockStory', url: 'https://stockstory.org/us/stocks/nasdaq/klac/news/why-up-down/why-is-kla-corporation-klac-stock-soaring-today-3' }]],
+      ['资本', '宣布 $70 亿股票回购计划，季度股息上调至 $2.30（+21%），连续第 17 年加息', [{ name: 'KLA IR', url: 'https://ir.kla.com/news-events/press-releases/detail/512/kla-hosts-investor-day-announces-7-billion-share' }]],
     ],
   },
 ];
@@ -202,9 +202,12 @@ export const chinaSection = {
   companies: [
     {
       name: '北方华创', ticker: '002371.SZ',
-      highlight: 'SEMICON China 2026 发布三款重磅设备，2026 年订单目标 600 亿元，有望跻身全球设备商前五。',
+      highlight: 'SEMICON China 2026 发布三款重磅设备；券商预测 2026 年新签订单 600 亿元，有望跻身全球设备商前五。',
       why: '北方华创的 NMC612H ICP 刻蚀设备已在 SMIC 7nm 产线测试，这是中国刻蚀设备首次进入 sub-10nm 验证阶段。混合键合和 TSV 电镀设备则瞄准先进封装国产化。',
-      highlightSources: [{ name: '36Kr', url: 'https://36kr.com/p/3739559184039940' }],
+      highlightSources: [
+        { name: '36Kr', url: 'https://36kr.com/p/3739559184039940' },
+        { name: '新浪财经（东方证券研报）', url: 'https://finance.sina.com.cn/stock/bxjj/2026-03-24/doc-inhsarqt3395133.shtml' },
+      ],
       events: [
         ['新品', '12 英寸 NMC612H ICP 刻蚀、Qomola HPD30 混合键合、Ausip T830 TSV 电镀', [{ name: '新浪财经', url: 'https://finance.sina.com.cn/stock/bxjj/2026-03-30/doc-inhsuknu9640085.shtml' }]],
         ['验证', '刻蚀设备已在 SMIC 7nm 产线测试', [{ name: 'SCMP', url: 'https://www.scmp.com/tech/big-tech/article/3348044/chinas-top-chip-foundry-smic-unveils-action-plan-seizing-new-growth-opportunities' }]],
@@ -385,7 +388,8 @@ export const policy = [
     text: 'TSMC 宣布追加 $1,000 亿美国投资。但 Section 48D 先进制造投资税收抵免将于 2026 年到期，续期前景不明。',
     why: '如果 48D 不续期，美国本土 Fab 建设的经济性将显著下降，可能影响 Intel、TSMC、Samsung 在美扩产计划的节奏——进而影响设备采购时间线。',
     sources: [
-      { name: 'Conference Board', url: 'https://www.conference-board.org/research/ced-policy-backgrounders/the-future-of-the-CHIPS-and-Science-Act' },
+      { name: 'ITIF', url: 'https://itif.org/publications/2025/06/10/us-semiconductor-manufacturing-tax-credits-must-be-extended-and-broadened/' },
+      { name: 'Federal Register 48D', url: 'https://www.federalregister.gov/documents/2024/10/23/2024-23857/advanced-manufacturing-investment-credit-rules-under-sections-48d-and-50' },
     ],
   },
 ];
