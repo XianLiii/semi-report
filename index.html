@@ -457,7 +457,7 @@
       Semiconductor Weekly
       <span class="version-dropdown" id="versionDropdown">
         <button class="version-btn" onclick="document.getElementById('versionDropdown').querySelector('.version-menu').classList.toggle('open')">
-          <span class="version-label" id="versionLabel">V1</span>
+          V1
           <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
         </button>
         <div class="version-menu">
@@ -719,11 +719,6 @@ document.addEventListener('click', (e) => {
     dd.querySelector('.version-menu').classList.remove('open');
   }
 });
-</script>
-<script type="module">
-import { meta } from './data.mjs';
-const label = document.getElementById('versionLabel');
-if (label && meta?.dateRange) label.textContent = meta.dateRange;
 </script>
 </body>
 </html>
